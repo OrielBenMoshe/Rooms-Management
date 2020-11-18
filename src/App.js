@@ -1,26 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-
-
-
+import OpenningPage from "./components/OpenningPage/OpenningPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Rooms Management
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <OpenningPage />
     </div>
   );
 }
