@@ -3,25 +3,49 @@ import {Container} from '@material-ui/core'
 import Header from './header/Header';
 import Daybook from './dayBook/Daybook';
 import DropBox from './dropBox/DropBox';
+import TransitionsModal from '../TransitionsModal/TransitionsModal';
+
+import {
+  Typography,
+  Button }     from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
 
 
 
 function OpenningPage() {
+
+  const useStyles = makeStyles(theme => ({
+    root: {
+    margin: theme.spacing(3),
+    width: 345,
+    },
+    media: {
+    height: 140,
+    },
+    title: {
+    color: theme.palette.primary.main
+    }
+    }));
+  const classes = useStyles();
+
   return (
-    <Container>
-      <div className="OpenningPage">
+    <Container maxWidth="sm">
+      <div className={`OpenningPage ${classes.root}`}>
           <Header/>
-          <p>שלום דניאל,</p>
-          <p>ברוכים הבאים למערכת זימון חדרים של בנימין טק למתי לשריין לך את החדר?</p>
+          <Typography gutterBottom variant="h5" component="h2" className={classes.title}>שלום דניאל,</Typography>
+          <Typography variant="body2" color="textSecondary" component="p">ברוכים הבאים למערכת זימון חדרים של בנימין טק למתי לשריין לך את החדר?</Typography>
           <form>
             <Daybook/>
             <DropBox/>
             <DropBox/>
             <DropBox/>
-            <input type="submit" value="מתאים לי בדיוק" />
+            <TransitionsModal 
+              buttonText="מתאים לי בדיוק"
+              buttonType="submit"/>
           </form>
+          {/* <SpringModal/> */}
       </div>
-    </Container>
+    </Container>  
   );
 }
 
