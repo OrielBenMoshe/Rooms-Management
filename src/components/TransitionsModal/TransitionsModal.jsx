@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {Fade, Grid, Button, Backdrop, Modal, Divider } from '@material-ui/core';
+import CancelPresentationOutlinedIcon from '@material-ui/icons/CancelPresentationOutlined';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +33,7 @@ export default function TransitionsModal(props) {
   return (
     <div>
     
-      <Button type={props.buttonType} variant="contained" color="primary" onClick={handleOpen}>
+      <Button variant="contained" color="primary" onClick={handleOpen}>
         {props.buttonText}
       </Button>
       <Modal
@@ -41,13 +42,14 @@ export default function TransitionsModal(props) {
         className={classes.modal}
         open={open}
         onClose={handleClose}
-        closeAfterTransition
+        closeAfterTransition={true}
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
         <Fade in={open}>
+          {/* <CancelPresentationOutlinedIcon/> */}
           <div className={classes.paper}>
             <h2 id="transition-modal-title">תענוג, החדר כולו שלך!</h2>
             <p id="transition-modal-description">תזכורת עם כל הפרטים כבר בדרך לתיבת המייל שלך</p>

@@ -8,7 +8,7 @@ import {
   } from 'react-router-dom';
 
 import OpenningPage from "./components/OpenningPage/OpenningPage";
-import PersonalArea from "./components/PersonalArea/PersonalArea";
+import UserProfile from "./components/userProfile/UserProfile";
 import Lobby from "./components/Lobby/Lobby";
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -36,7 +36,7 @@ function App() {
               <Link to="/">OpenningPage</Link>
             </li>
             <li>
-              <Link to="/PersonalArea">PersonalArea</Link>
+              <Link to="/UserProfile">UserProfile</Link>
             </li>
             <li>
               <Link to="/Lobby">Lobby</Link>
@@ -48,8 +48,8 @@ function App() {
               <Route exact path="/">
                 <OpenningPage/>
               </Route>
-              <Route path="/PersonalArea">
-                <PersonalArea />
+              <Route path="/UserProfile">
+                <UserProfile />
               </Route>
               <Route path="/Lobby">
                 <Lobby />

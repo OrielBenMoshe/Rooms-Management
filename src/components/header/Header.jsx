@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import UserContext from './../../../UserContext';
+import UserContext from './../../UserContext';
 //Material UI imports.
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -25,12 +25,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 2,
   },
   container: {
-    display: "flex",
+    display: 'flex',
+    justifyContent: "space-between",
   },
-  logo: {
-    display: "flex",
-    float: "left",
-  }
+  
 
 }));
 
@@ -57,21 +55,21 @@ export default function Header(props) {
   };
 
   return (
-    <div className={classes.root}>
+    <div>
       <FormGroup>
         <FormControlLabel
           control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup>
-      <AppBar position="static">
+      <AppBar position="static" >
         <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
           
-          {auth && (
-            <div className={classes.container}>
+          
+            <div className={classes.container} justifyContent="space-between">
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -99,6 +97,7 @@ export default function Header(props) {
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
+            {auth && (
               <div>
               <Typography variant="subtitle1" className={classes.title}>
                 {user.name} {user.surName}
@@ -107,8 +106,9 @@ export default function Header(props) {
                 יתרה {user.credit} אסימונים
               </Typography>
               </div>
+            )}
             </div>
-          )}
+          
           
           <img src="logo.png" className={classes.logo}  alt="Image"/>
         
