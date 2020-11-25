@@ -47,38 +47,3 @@ components:
                * 6 options
                * BtnSelfSearch
       *    * SelfSearch
-
-
-
-room = 
-   {
-      room_id:
-      room_name:
-      images: []
-      people_limit:
-      price:
-      occupied(תאריכים תפוסים): [id_room->reservation]
-   
-   }
-
-reservation = 
-   {
-      _id: ,
-      id_room: ,
-      id_client: ,
-      date: ,
-      start: ,
-      end: ,
-   }
-
-client = 
-{
-   _id:
-   user_name:
-   phone:
-   email:
-   password: 
-   regularCustomer: Boolean (true)
-   credits: 8,
-   client_reservation: [id_client->reservation]
-}
