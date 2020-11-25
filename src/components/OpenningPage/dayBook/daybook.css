@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.MuiPickersDatePickerRoot-toolbar {
+  position: relative;
+  text-align: right;
+  width: 100% !important;
+  align-items: stretch !important;
+  background-color: transparent !important;
+  border-bottom: 20px solid "#b2adad";
+  /* color: #262626 !important; */
+  display: flex !important;
+}
+
+.MuiPickersBasePicker-container {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center;
+}
+.MuiPickersToolbarText-toolbarBtnSelected {
+  color: #262626 !important;
+}
+.MuiPickersToolbar-toolbarLandscape {
+  height: auto;
+  padding: 8px;
+  max-width: 50% !important;
+  justify-content: flex-start;
+}
+.MuiPickersBasePicker-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.MuiContainer-root {
+  width: 50%;
+  display: block;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.MuiTypography-h4 {
+  font-size: 1.4rem !important;
+  text-align: right !important;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
+}
+.MuiPickersToolbarText-toolbarTxt {
+  color: #46494f !important;
+}
+.MuiTypography-h4 {
+  font-size: 2.125rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
+  width: 85%;
+}
+.MuiPickersToolbar-toolbar {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse !important;
+  justify-content: space-between !important;
+  background-color: #467fcf;
+}
