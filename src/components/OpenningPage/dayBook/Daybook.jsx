@@ -9,10 +9,8 @@ import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { he } from "date-fns/locale";
 
-// import useStyles from "./styles";
 
 const Daybook = () => {
-  // const classes = useStyles();
   const [selectedDate, setSelectedDate] = useState(new Date());
   const handleDateChange = (date) => {
     console.log(date);
