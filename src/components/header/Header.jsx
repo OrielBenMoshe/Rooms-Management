@@ -26,17 +26,14 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     display: 'flex',
-<<<<<<< HEAD
     justifyContent: "space-between",
     color : '#46494F'
     
   },
   appBar : {
-    backgroundColor : 'white'
-  }
+    backgroundColor : 'white',
   
-=======
-    justifyContent: 'space-between',
+    justifyContent:'space-between',
     padding: '0 10px'
   },
   userDetails: {
@@ -44,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     textAlign: 'right',
   }
->>>>>>> a24adddc7530c91d2fac4041072a74b2e00c7889
   
 
 }));
@@ -79,13 +75,8 @@ const useStyles = makeStyles((theme) => ({
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup>
-<<<<<<< HEAD
       <AppBar className = {classes.appBar} variant = 'secendery' position="static" >
         <Toolbar>
-=======
-      <AppBar position="static" >
-        <Toolbar className={classes.container}>
->>>>>>> a24adddc7530c91d2fac4041072a74b2e00c7889
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
@@ -121,21 +112,12 @@ const useStyles = makeStyles((theme) => ({
               </Menu>
             {auth && (
               <div>
-<<<<<<< HEAD
               <Typography color="textPrimary" variant="body2" className={classes.title}>
                 {user.name} {user.surName}
               </Typography>
               <Typography variant="body2" className={classes.title}>
                 יתרה {user.credit} אסימונים
               </Typography>
-=======
-                <Typography variant="subtitle1" className={classes.title}>
-                  {user.name} {user.surName}
-                </Typography>
-                <Typography variant="subtitle2" className={classes.title}>
-                  יתרה {user.credit} אסימונים
-                </Typography>
->>>>>>> a24adddc7530c91d2fac4041072a74b2e00c7889
               </div>
             )}
           </div>

@@ -111,3 +111,6 @@
   justify-content: space-between;
   direction: ltr !important;
 }
+.MuiPaper-elevation1 {
+  box-shadow: none !important;
+}
