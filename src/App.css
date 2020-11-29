@@ -2,3 +2,16 @@
   box-sizing: border-box;
   padding: 0;
 }
+.MuiCard-root {
+  box-shadow: none !important;
+}
+.MuiToolbar-root {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+.MuiToolbar-gutters {
+  padding-left: 2px;
+  padding-right: 2px;
+}
