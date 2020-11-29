@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import UserContext from './../../UserContext';
+import {Link} from 'react-router-dom';
+import './Header.css';
 //Material UI imports.
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -18,16 +20,19 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 2,
   },
   container: {
     display: 'flex',
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
+    padding: '0 10px'
   },
+  userDetails: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    textAlign: 'right',
+  }
   
 
 }));
@@ -63,13 +68,11 @@ export default function Header(props) {
         />
       </FormGroup>
       <AppBar position="static" >
-        <Toolbar>
+        <Toolbar className={classes.container}>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
-          
-          
-            <div className={classes.container} justifyContent="space-between">
+          <div className={classes.userDetails}>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -94,20 +97,22 @@ export default function Header(props) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <Link to="/UserProfile">
+                  <MenuItem onClick={handleClose}>פרופיל משתמש</MenuItem>                 
+                </Link>
+                <MenuItem onClick={handleClose}>התנתקות</MenuItem>
               </Menu>
             {auth && (
               <div>
-              <Typography variant="subtitle1" className={classes.title}>
-                {user.name} {user.surName}
-              </Typography>
-              <Typography variant="subtitle2" className={classes.title}>
-                יתרה {user.credit} אסימונים
-              </Typography>
+                <Typography variant="subtitle1" className={classes.title}>
+                  {user.name} {user.surName}
+                </Typography>
+                <Typography variant="subtitle2" className={classes.title}>
+                  יתרה {user.credit} אסימונים
+                </Typography>
               </div>
             )}
-            </div>
+          </div>
           
           
           <img src="logo.png" className={classes.logo}  alt="Image"/>
