@@ -20,14 +20,18 @@ function OpenningPage() {
 
   const useStyles = makeStyles(theme => ({
     root: {
-    margin: theme.spacing(3),
+    margin: 'auto',
     width: 345,
+    textAlign: 'right',
+    },
+    notification: {
+      padding: '10px 20px'
     },
     media: {
     height: 140,
     },
     title: {
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
     }
     }));
   const classes = useStyles();
@@ -53,8 +57,10 @@ function OpenningPage() {
     <Container maxWidth="sm">
       <div className={`OpenningPage ${classes.root}`}>
           <Header/>
-          <Typography gutterBottom variant="h5" component="h2" className={classes.title}>שלום,</Typography>
-          <Typography variant="body2" color="textSecondary" component="p">ברוכים הבאים למערכת זימון חדרים של בנימין טק למתי לשריין לך את החדר?</Typography>
+          <div className={classes.notification}>
+            <Typography gutterBottom variant="h5" component="h2" className={classes.title}>שלום,</Typography>
+            <Typography variant="body2" color="textSecondary" component="p">ברוכים הבאים למערכת זימון חדרים של בנימין טק למתי לשריין לך את החדר?</Typography>
+          </div>
           <form>
             <Daybook/>
             <DropBox lable="משעה" updateTime={updateTime} theTime={theTime.startAt}/>

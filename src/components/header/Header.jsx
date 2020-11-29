@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import UserContext from './../../UserContext';
+import {Link} from 'react-router-dom';
+import './Header.css';
 //Material UI imports.
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -19,14 +21,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 2,
   },
   container: {
     display: 'flex',
+<<<<<<< HEAD
     justifyContent: "space-between",
     color : '#46494F'
     
@@ -35,6 +35,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor : 'white'
   }
   
+=======
+    justifyContent: 'space-between',
+    padding: '0 10px'
+  },
+  userDetails: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    textAlign: 'right',
+  }
+>>>>>>> a24adddc7530c91d2fac4041072a74b2e00c7889
   
 
 }));
@@ -69,14 +79,17 @@ const useStyles = makeStyles((theme) => ({
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup>
+<<<<<<< HEAD
       <AppBar className = {classes.appBar} variant = 'secendery' position="static" >
         <Toolbar>
+=======
+      <AppBar position="static" >
+        <Toolbar className={classes.container}>
+>>>>>>> a24adddc7530c91d2fac4041072a74b2e00c7889
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
-          
-          
-            <div className={classes.container} justifyContent="space-between">
+          <div className={classes.userDetails}>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -101,20 +114,31 @@ const useStyles = makeStyles((theme) => ({
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <Link to="/UserProfile">
+                  <MenuItem onClick={handleClose}>פרופיל משתמש</MenuItem>                 
+                </Link>
+                <MenuItem onClick={handleClose}>התנתקות</MenuItem>
               </Menu>
             {auth && (
               <div>
+<<<<<<< HEAD
               <Typography color="textPrimary" variant="body2" className={classes.title}>
                 {user.name} {user.surName}
               </Typography>
               <Typography variant="body2" className={classes.title}>
                 יתרה {user.credit} אסימונים
               </Typography>
+=======
+                <Typography variant="subtitle1" className={classes.title}>
+                  {user.name} {user.surName}
+                </Typography>
+                <Typography variant="subtitle2" className={classes.title}>
+                  יתרה {user.credit} אסימונים
+                </Typography>
+>>>>>>> a24adddc7530c91d2fac4041072a74b2e00c7889
               </div>
             )}
-            </div>
+          </div>
           
           
           <img src="logo.png" className={classes.logo}  alt="Image"/>

@@ -24,7 +24,7 @@ function App() {
     name: 'דניאל',
     surName: 'בן דוד',
     city: 'בנימין' ,
-    credit: 100
+    credit: 8
     };
 
   return (
