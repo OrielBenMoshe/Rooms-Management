@@ -47,3 +47,49 @@ components:
                * 6 options
                * BtnSelfSearch
       *    * SelfSearch
+
+
+
+RoomSchem = 
+   {
+      room_id:
+      room_name:
+      images: []
+      people_limit:
+      price:
+      opening_hours:
+         {
+            Sunday: [["8:00","18:00]],
+            Monday: [["8:00","13:00],["16:00","20:00"]],
+            Tuesday :[["8:00","18:00]],
+            Wednesday : [["8:00","18:00]],
+            Thursday : [["8:00","18:00]],
+            Friday: [["8:00","13:00"]],
+            Sabbath: []
+         }
+
+      occupied(תאריכים תפוסים): [id_room->reservation]
+   
+   }
+
+ReservationSchem(הזמנה) = 
+   {
+      _id: ,
+      id_room: ,
+      id_client: ,
+      date: ,
+      start: ,
+      end: ,
+   }
+
+ClientSchem = 
+   {
+      _id:
+      user_name:
+      phone:
+      email:
+      password: 
+      regularCustomer: Boolean (true)
+      credits: 8,
+      client_reservation: [id_client->reservation]
+   }
