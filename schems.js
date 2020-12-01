@@ -23,7 +23,7 @@ const RoomSchema = new mongoose.Schema({
 const ReservationSchema = new mongoose.Schema({
       id_room:  { type: schema.Types.ObjectId, ref: "Room" },
       id_client: { type: schema.Types.ObjectId, ref: "Client" },
-      date: [String],
+      date: String,
       start: String,
       end: String,
    })
