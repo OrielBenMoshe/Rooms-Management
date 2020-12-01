@@ -5,19 +5,26 @@ import { Card,
     CardContent,
     Typography,
     CardActions,
-    Button }     from '@material-ui/core'
+    Button
+  ,Divider }     from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
+
+import {EditOutlined} from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => ({
 root: {
 margin: theme.spacing(3),
-width: 345,
+width: '100%',
+padding : '6px'
 },
 media: {
 height: 140,
 },
 title: {
 color: theme.palette.primary.main
+},
+HebrewtextAlgin : {
+  textAlign: 'right'
 }
 }))
 
@@ -27,26 +34,29 @@ const classes = useStyles()
 return (
 <Card className={classes.root}>
  <CardActionArea>
-   <CardMedia
-     className={classes.media}
-     image="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80"
-     title="Surprised monkey"
-   />
+
    <CardContent>
-     <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
-       OMG it's a Monkey!
+     <Typography color="textPrimary" gutterBottom variant="body2" component="p" className={classes.title, classes.HebrewtextAlgin}>
+       יום שני , 7 בספטמבר  2020 |  9:00 - 10:00
      </Typography>
-     <Typography variant="body2" color="textSecondary" component="p">
-     Monkey is a common name that may refer to groups or species of mammals.
-     The term is applied descriptively to groups of primates.
+    
+     <Typography variant="body2"  component="p" className = {classes.HebrewtextAlgin}>
+    שופר - חדר עד 6 משתתפים
      </Typography>
+     <div style = {{display : 'flex',justifyContent : 'space-between',alignItems : 'center',marginLeft : '3.2rem'}}>
+      <Button> <EditOutlined fontSize = 'small' style={{ color: '#00AAAF' }} variant = 'outline'/></Button>
+     <Typography variant="body2" color="textSecondary" component="p" className = {classes.HebrewtextAlgin}>
+   נוצלו 15 אסימונים
+     </Typography>
+     
+
+     </div>
+     
    </CardContent>
  </CardActionArea>
- <CardActions>
-   <Button size="small" color="primary" href="https://unsplash.com/photos/Z05GiksmqYU">
-     See it on Unsplash
-   </Button>
- </CardActions>
+ <Divider variant="inset" component="li" />
+
+ 
 </Card>
 )
 }

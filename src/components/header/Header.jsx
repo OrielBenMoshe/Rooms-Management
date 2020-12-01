@@ -15,6 +15,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,14 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
+    color : '#46494F'
+    
+  },
+  appBar : {
+    backgroundColor : 'white',
+  
+    justifyContent:'space-between',
     padding: '0 10px'
   },
   userDetails: {
@@ -38,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Header(props) {
+ function Header({history,match}) {
 
   const user = useContext(UserContext);
 
@@ -67,8 +75,8 @@ export default function Header(props) {
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup>
-      <AppBar position="static" >
-        <Toolbar className={classes.container}>
+      <AppBar className = {classes.appBar} variant = 'secendery' position="static" >
+        <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
@@ -77,7 +85,7 @@ export default function Header(props) {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                onClick={(e)=>{handleMenu(e); history.push("/UserProfile")}}
                 color="inherit"
               >
                 <AccountCircle fontSize='small' />
@@ -104,12 +112,12 @@ export default function Header(props) {
               </Menu>
             {auth && (
               <div>
-                <Typography variant="subtitle1" className={classes.title}>
-                  {user.name} {user.surName}
-                </Typography>
-                <Typography variant="subtitle2" className={classes.title}>
-                  יתרה {user.credit} אסימונים
-                </Typography>
+              <Typography color="textPrimary" variant="body2" className={classes.title}>
+                {user.name} {user.surName}
+              </Typography>
+              <Typography variant="body2" className={classes.title}>
+                יתרה {user.credit} אסימונים
+              </Typography>
               </div>
             )}
           </div>
@@ -122,3 +130,5 @@ export default function Header(props) {
     </div>
   );
 }
+
+export default withRouter(Header)

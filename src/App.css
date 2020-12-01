@@ -1,3 +1,14 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+.MuiCard-root {
+  box-shadow: none !important;
+}
+.MuiToolbar-root {
+  display: flex;
+  position: relative;
+}
 
 .MuiPickersDatePickerRoot-toolbar {
   position: relative;
@@ -6,21 +17,17 @@
   align-items: stretch !important;
   background-color: transparent !important;
   border-bottom: 20px solid "#b2adad";
-  /* color: #262626 !important; */
+  color: #262626 !important;
   display: flex !important;
 
-  /* display: none !important; */
+  display: none !important;
 }
 
-.MuiPickersDatePickerRoot-toolbarLandscape{
+.MuiPickersDatePickerRoot-toolbarLandscape {
   padding: 0;
-} 
-.MuiPickersToolbar-toolbarLandscape{
-  height: 0;
 }
-
-.MuiTypography-h4 {
-
+.MuiPickersToolbar-toolbarLandscape {
+  height: 0;
 }
 
 .MuiPickersBasePicker-container {
@@ -40,19 +47,14 @@
 .MuiPickersBasePicker-container {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: space-between;
 }
-.MuiContainer-root {
-  width: 50%;
-  display: block;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
+.MuiToolbar-gutters {
+  padding-left: 2px;
+  padding-right: 2px;
 }
 .MuiTypography-h4 {
-  font-size: 0.900rem !important;
+  font-size: 0.9rem !important;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   line-height: 1.235;
