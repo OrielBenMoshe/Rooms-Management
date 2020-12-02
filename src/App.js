@@ -16,7 +16,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
 
-import { UserProvider } from './UserContext';
+import { UserProvider } from './Context';
 
 function App() {
 
@@ -25,7 +25,31 @@ function App() {
     surName: 'בן דוד',
     city: 'בנימין' ,
     credit: 8
-    };
+  };
+
+  const roomsArray = [
+    {
+      room_name: "שופר",
+      capacity: 4,
+      price: 2
+    },
+    {
+      room_name: "נבל",
+      capacity: 7,
+      price: 2
+    },
+    {
+      room_name: "כינור",
+      capacity: 7,
+      price: 2
+    },
+    {
+      room_name: "מחול",
+      capacity: 10,
+      price: 3
+    },
+  ]
+  
 
   return (
   

@@ -77,7 +77,7 @@ export default function AlertDialog(props) {
         <DialogContent>
         
             <p>שופר - חדר עד 6 משתתפים</p>
-            <p>{reservation.theDay}</p>
+            <p>בתאריך: {reservation.theDay}/{reservation.theMonth}</p>
             <p>{reservation.startAt}-{reservation.endAt}</p>
             <DialogContentText id="alert-dialog-description">
                 לשמור לך אותו תמורת  אסימונים?

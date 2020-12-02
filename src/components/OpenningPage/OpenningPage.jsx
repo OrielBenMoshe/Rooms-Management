@@ -1,12 +1,13 @@
-import UserContext from './../../UserContext';
+import Context from './../../Context';
 import React, { useState} from "react";
 import {Container} from '@material-ui/core'
+
 import Header from './../header/Header';
-import Daybook from './dayBook/Daybook';
-import DropBox from './dropBox/DropBox';
+
+import DayPicker from './DayPicker/DayPicker';
+import TimePicker from './TimePicker/TimePicker';
 import AlertDialog from './AlertDialog/AlertDialog';
-import TransitionsModal from './../TransitionsModal/TransitionsModal';
-import Room from './dropBox/Room';
+import CapacityPicker from './CapacityPicker/CapacityPicker';
 
 
 import {
@@ -36,32 +37,54 @@ function OpenningPage() {
     }));
   const classes = useStyles();
 
-  const [theDate,setTheDate] = useState({
+  const [reservation,setReservation] = useState({
     theDay: new Date().getDate(),
-    theMonth: new Date().getMonth(),
+    theMonth: new Date().getMonth() +1,
     startAt: "07:30",
-    endAt: "16:30"
+    endAt: "16:30",
+    capacity: 2,
   });
   
-  const [room,setRoom] = useState(2)
 
-  const handleDateChange = (day, month) =>{
-    setTheDate({theDay: day});
-    setTheDate({theMonth: month});
-  };
+// Set the new Date that changed, to State.
+  const handleDateChange = (newDate) => {
     
- function updateTime(value,time){
-   let theNewTime = theDate;
-   if (time === "משעה"){theNewTime.startAt = value}
-   else {theNewTime.endAt = value};
-   setTheDate(theNewTime);
- } 
- 
- function selectRoom(value){
-   setRoom(value)
- }
+    const reservationTemp = reservation;
+    reservationTemp.theDay = newDate.getDate();
+    reservationTemp.theMonth = newDate.getMonth() +1;
+    setReservation(reservationTemp);
+
+    console.log("The date has changed!" ,reservation);
+
+  };
   
-  // const user = useContext(UserContext);
+// Set the new Time that changed, to State.
+  const handleTimeChange = (value, lable) => {
+
+    const reservationTemp = reservation;
+
+    lable === "משעה" ? 
+      reservationTemp.startAt = value : 
+      reservationTemp.endAt = value;
+    setReservation(reservationTemp);
+
+    console.log("The time has changed!" ,reservation);
+
+  } 
+ 
+  function handleCapacityChange(value) {
+
+    const reservationTemp = reservation;
+    
+    reservationTemp.capacity = value;
+    setReservation(reservationTemp);
+
+    console.log("The capacity has changed!" ,reservation);
+
+  }
+
+  
+  
   return (
     <Container maxWidth="sm">
       <div className={`OpenningPage ${classes.root}`}>
@@ -71,14 +94,14 @@ function OpenningPage() {
             <Typography variant="body2" color="textSecondary" component="p">ברוכים הבאים למערכת זימון חדרים של בנימין טק למתי לשריין לך את החדר?</Typography>
           </div>
           <form>
-            <Daybook pickedDate={handleDateChange}/>
-            <DropBox lable="משעה" updateTime={updateTime} theTime={theDate.startAt}/>
-            <DropBox lable="עד שעה" updateTime={updateTime} theTime={theDate.endAt}/>
-            <Room selectRoom={selectRoom} room={room}/>
+            <DayPicker selectedDate={handleDateChange}/>
+            <TimePicker selectedTime={handleTimeChange} lable="משעה" theTime={reservation.startAt}/>
+            <TimePicker selectedTime={handleTimeChange} lable="עד שעה" theTime={reservation.endAt}/>
+            <CapacityPicker selectedCapacity={handleCapacityChange} capacitiesArray="2"/>
             <AlertDialog 
               buttonText="מתאים לי בדיוק"
               buttonType="submit"
-              reservation={theDate}
+              reservation={reservation}
             />
             {/* <TransitionsModal buttonText="מתאים לי בדיוק"/> */}
           </form>

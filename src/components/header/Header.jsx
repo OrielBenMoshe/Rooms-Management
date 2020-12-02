@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import UserContext from './../../UserContext';
+import Context from './../../Context';
 import {Link} from 'react-router-dom';
 //Material UI imports.
 import { makeStyles } from '@material-ui/core/styles';
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
  function Header({history,match}) {
 
-  const user = useContext(UserContext);
+  const user = useContext(Context);
 
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
