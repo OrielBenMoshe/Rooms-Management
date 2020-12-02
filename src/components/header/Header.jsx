@@ -22,23 +22,18 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 2,
-  },
-  container: {
-    display: 'flex',
-    justifyContent: "space-between",
     color : '#46494F'
-    
   },
-  appBar : {
+  toolBar : {
     backgroundColor : 'white',
-  
+    display: 'flex',
     justifyContent:'space-between',
-    padding: '0 10px'
+    padding: '0 10px',
+    
   },
   userDetails: {
     display: 'flex',
-    justifyContent: 'space-between',
-    textAlign: 'right',
+    justifyContent: 'flex-start',
   }
   
 
@@ -74,8 +69,9 @@ const useStyles = makeStyles((theme) => ({
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup>
-      <AppBar className = {classes.appBar} variant = 'secendery' position="static" >
-        <Toolbar>
+
+      <AppBar variant='secendery' position="static">
+        <Toolbar className={classes.toolBar}>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
@@ -85,10 +81,12 @@ const useStyles = makeStyles((theme) => ({
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={(e)=>{handleMenu(e); history.push("/UserProfile")}}
-                color="inherit"
+                color="primary"
               >
-                <AccountCircle fontSize='small' />
+                  <AccountCircle fontSize='small' />
               </IconButton>
+
+              {/* This is the menu of the icon button */}
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -104,17 +102,19 @@ const useStyles = makeStyles((theme) => ({
                 open={open}
                 onClose={handleClose}
               >
-                <Link to="/UserProfile">
-                  <MenuItem onClick={handleClose}>פרופיל משתמש</MenuItem>                 
-                </Link>
-                <MenuItem onClick={handleClose}>התנתקות</MenuItem>
+
+                  <Link to="/UserProfile">
+                    <MenuItem onClick={handleClose}>פרופיל משתמש</MenuItem>                 
+                  </Link>
+                  <MenuItem onClick={handleClose}>התנתקות</MenuItem>
+
               </Menu>
             {auth && (
               <div>
               <Typography color="textPrimary" variant="body2" className={classes.title}>
                 {user.name} {user.surName}
               </Typography>
-              <Typography variant="body2" className={classes.title}>
+              <Typography color="textPrimary" variant="body2" className={classes.title}>
                 יתרה {user.credit} אסימונים
               </Typography>
               </div>
