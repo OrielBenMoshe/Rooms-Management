@@ -56,7 +56,8 @@ export default function AlertDialog(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
+  let reservation = props.reservation;
+ 
   return (
     <div>
       <Button className={classes.button} variant="contained" color="primary" onClick={handleClickOpen}>
@@ -76,8 +77,8 @@ export default function AlertDialog(props) {
         <DialogContent>
         
             <p>שופר - חדר עד 6 משתתפים</p>
-            <p>ליום שני, 7 בספטמבר 2020</p>
-            <p>לשעה 9:00-10:00</p>
+            <p>{reservation.theDay}</p>
+            <p>{reservation.startAt}-{reservation.endAt}</p>
             <DialogContentText id="alert-dialog-description">
                 לשמור לך אותו תמורת  אסימונים?
             </DialogContentText>

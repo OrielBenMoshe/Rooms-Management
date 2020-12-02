@@ -36,17 +36,26 @@ function OpenningPage() {
     }));
   const classes = useStyles();
 
-  const [theTime,setTheTime]=useState({
+  const [theDate,setTheDate] = useState({
+    theDay: new Date().getDate(),
+    theMonth: new Date().getMonth(),
     startAt: "07:30",
-    endAt: "16:30"});
-   const [room,setRoom]=useState(2)
+    endAt: "16:30"
+  });
+  
+  const [room,setRoom] = useState(2)
+
+  const handleDateChange = (day, month) =>{
+    setTheDate({theDay: day});
+    setTheDate({theMonth: month});
+  };
     
  function updateTime(value,time){
-   let theNewTime=theTime;
-   if (time==="משעה"){theNewTime.startAt=value}
-   else {theNewTime.endAt=value};
-   setTheTime(theNewTime);
- }
+   let theNewTime = theDate;
+   if (time === "משעה"){theNewTime.startAt = value}
+   else {theNewTime.endAt = value};
+   setTheDate(theNewTime);
+ } 
  
  function selectRoom(value){
    setRoom(value)
@@ -62,13 +71,15 @@ function OpenningPage() {
             <Typography variant="body2" color="textSecondary" component="p">ברוכים הבאים למערכת זימון חדרים של בנימין טק למתי לשריין לך את החדר?</Typography>
           </div>
           <form>
-            <Daybook/>
-            <DropBox lable="משעה" updateTime={updateTime} theTime={theTime.startAt}/>
-            <DropBox lable="עד שעה" updateTime={updateTime} theTime={theTime.endAt}/>
+            <Daybook pickedDate={handleDateChange}/>
+            <DropBox lable="משעה" updateTime={updateTime} theTime={theDate.startAt}/>
+            <DropBox lable="עד שעה" updateTime={updateTime} theTime={theDate.endAt}/>
             <Room selectRoom={selectRoom} room={room}/>
             <AlertDialog 
               buttonText="מתאים לי בדיוק"
-              buttonType="submit"/>
+              buttonType="submit"
+              reservation={theDate}
+            />
             {/* <TransitionsModal buttonText="מתאים לי בדיוק"/> */}
           </form>
       </div>
