@@ -12,7 +12,7 @@ function CapacityPicker(props) {
         <Select
       labelId="בחר את סוג החדר"
       id="selectRoom"
-      value={props.room}
+      value={props.capacitiesArray}
       onChange={handleCapacityChange}
       className="select"
       style={{ width:"100%", padding: "0 20px" }}
