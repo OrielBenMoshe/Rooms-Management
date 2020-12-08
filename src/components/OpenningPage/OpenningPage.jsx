@@ -4,6 +4,7 @@ import {Container} from '@material-ui/core'
 
 import Header from './../header/Header';
 
+import Accordions from './Accordions/Accordions';
 import DayPicker from './DayPicker/DayPicker';
 import TimePicker from './TimePicker/TimePicker';
 import AlertDialog from './AlertDialog/AlertDialog';
@@ -95,9 +96,12 @@ function OpenningPage() {
           </div>
           <form>
             <DayPicker selectedDate={handleDateChange}/>
+            <Accordions/>
+            {/* 
             <TimePicker selectedTime={handleTimeChange} lable="משעה" theTime={reservation.startAt}/>
             <TimePicker selectedTime={handleTimeChange} lable="עד שעה" theTime={reservation.endAt}/>
-            <CapacityPicker selectedCapacity={handleCapacityChange} capacitiesArray="2"/>
+            <CapacityPicker selectedCapacity={handleCapacityChange} capacitiesArray="2"/> */}
+
             <AlertDialog 
               buttonText="מתאים לי בדיוק"
               buttonType="submit"

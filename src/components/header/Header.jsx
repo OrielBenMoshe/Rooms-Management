@@ -122,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
           </div>
           
           
-          <img src="logo.png" className={classes.logo}  alt="Image"/>
+          <img src="/images/logo.png" className={classes.logo}  alt="Image"/>
         
         </Toolbar>
       </AppBar>

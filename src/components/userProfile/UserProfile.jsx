@@ -56,7 +56,7 @@ import { styles } from '@material-ui/pickers/views/Calendar/Calendar';
   const useStyles = makeStyles((theme) => ({
     root: {
       backgroundColor: theme.palette.background.paper,
-      margin: theme.spacing(3),
+      margin: 'auto',
       width: 345,
       overflow : 'hidden'
     },

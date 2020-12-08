@@ -1,0 +1,8 @@
+.MuiAccordionSummary-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected_time {
+    font-size: 12px;
+}
