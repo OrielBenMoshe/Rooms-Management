@@ -1,50 +1,19 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@date-io/date-fns": "^1.3.13",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/pickers": "^3.2.10",
-    "@material-ui/icons": "^4.9.1",
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.1",
-    "@testing-library/user-event": "^12.2.0",
-    "date-fns": "^2.16.1",
-    "nodemon": "^2.0.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-input-verification-code": "^0.6.4",
-    "react-native": "^0.63.3",
-    "react-native-confirmation-code-field": "^6.5.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
-    "react-spring": "^8.0.27",
-    "react-swipeable-views": "^0.13.9",
-    "web-vitals": "^0.2.4"
-  },
+  "name": "rooms-management",
+  "version": "1.0.0",
+  "description": "",
+  "main": "connectDB.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.5"
   }
 }
