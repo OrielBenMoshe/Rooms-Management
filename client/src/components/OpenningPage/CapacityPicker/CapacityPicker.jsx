@@ -7,7 +7,6 @@ function CapacityPicker(props) {
     // props.selectedCapacity(e.target.value)
   }
   
-  const capacities = [2, 7, 14, 20];
 
   return (
     <div className="DropBox">
@@ -16,12 +15,12 @@ function CapacityPicker(props) {
         native
         labelId="בחר את סוג החדר"
         id="selectRoom"
-        value={props.capacitiesArray}
+        value={props.capacities[0]}
         onChange={handleCapacityChange}
         className="select"
         style={{ width:"100%", padding: "0 20px" }}
       >
-        {capacities.map((capacity) => (
+        {props.capacities.map((capacity) => (
           <option key={capacity} value={capacity}>
             עד {capacity} משתתפים
           </option>

@@ -1,5 +1,5 @@
 import Context from './../../Context';
-import React, { useState} from "react";
+import React, { useState } from "react";
 import {Container} from '@material-ui/core'
 
 import Header from './../header/Header';
@@ -38,11 +38,25 @@ function OpenningPage() {
     }));
   const classes = useStyles();
 
+  const addZero = (i) => {
+    if (i < 10) {
+      i = "0" + i;
+    }
+     
+    return i;
+  };
+
+
+  const theCurrentDate =  new Date();
+  const startTime = `${ addZero(theCurrentDate.getHours())}:${ addZero(theCurrentDate.getMinutes())}`;
+  const endTime = `${ addZero(theCurrentDate.getHours() !== 23 ? theCurrentDate.getHours() +1 : 0)}:${ addZero(theCurrentDate.getMinutes())}`;
+
+
   const [reservation,setReservation] = useState({
-    theDay: new Date().getDate(),
-    theMonth: new Date().getMonth() +1,
-    startAt: "07:30",
-    endAt: "16:30",
+    theDay: addZero(theCurrentDate.getDate()),
+    theMonth: addZero(theCurrentDate.getMonth() !== 12 ? theCurrentDate.getMonth() +1 : 1),
+    startAt: startTime ,
+    endAt: endTime,
     capacity: 2,
   });
   
@@ -73,7 +87,7 @@ function OpenningPage() {
 
   } 
  
-  function handleCapacityChange(value) {
+  const handleCapacityChange = (value) => {
 
     const reservationTemp = reservation;
     
@@ -96,7 +110,11 @@ function OpenningPage() {
           </div>
           <form>
             <DayPicker selectedDate={handleDateChange}/>
-            <Accordions/>
+            <Accordions 
+              reservation={reservation}
+              selectedTime={handleTimeChange}
+              selectedCapacity={handleCapacityChange}
+              />
             {/* 
             <TimePicker selectedTime={handleTimeChange} lable="משעה" theTime={reservation.startAt}/>
             <TimePicker selectedTime={handleTimeChange} lable="עד שעה" theTime={reservation.endAt}/>

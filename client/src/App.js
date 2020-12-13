@@ -24,7 +24,8 @@ function App() {
     name: 'דניאל',
     surName: 'בן דוד',
     city: 'בנימין' ,
-    credit: 8
+    credit: 8,
+    pasword: '1234',
   };
 
   const roomsArray = [
