@@ -1,22 +1,25 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
-const RoomSchema = new mongoose.Schema({
-  room_name: String,
-  images: [String],
-  capacity: Number,
-  price: Number,
-  opening_hours: {
-    Sunday: [[String]],
-    Monday: [[String]],
-    Tuesday: [[String]],
-    Wednesday: [[String]],
-    Thursday: [[String]],
-    Friday: [[String]],
-    Saturday: [[String]],
+const RoomSchema = new mongoose.Schema(
+  {
+    room_name: String,
+    images: [String],
+    capacity: Number,
+    price: Number,
+    opening_hours: {
+      Sunday: [[String]],
+      Monday: [[String]],
+      Tuesday: [[String]],
+      Wednesday: [[String]],
+      Thursday: [[String]],
+      Friday: [[String]],
+      Saturday: [[String]],
+    },
+    occupied: [{ type: schema.Types.ObjectId, ref: "Reservation" }],
   },
-  occupied: [{ type: schema.Types.ObjectId, ref: "Reservation" }],
-},{timesamps : true});
+  { timesamps: true }
+);
 
 const ReservationSchema = new mongoose.Schema({
   id_room: { type: schema.Types.ObjectId, ref: "Room" },
@@ -42,4 +45,4 @@ const Client = mongoose.model("Client", ClientSchema);
 
 const models = { Room, Reservation, Client };
 
-module.exports = models ;
+module.exports = models;
