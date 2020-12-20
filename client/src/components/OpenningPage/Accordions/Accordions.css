@@ -1,6 +1,7 @@
 .MuiAccordionSummary-content {
     display: flex;
     justify-content: space-between;
+    margin: 0;
 }
 
 .selected_time {
