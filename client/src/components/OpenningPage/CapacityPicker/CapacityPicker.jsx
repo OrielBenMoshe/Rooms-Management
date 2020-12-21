@@ -4,14 +4,15 @@ import {Select, MenuItem} from '@material-ui/core';
 function CapacityPicker(props) {
 
   const handleCapacityChange = (e) => {
-    // props.selectedCapacity(e.target.value)
+    props.selectedCapacity(e.target.value)
   }
   
 
   return (
-    <div className="DropBox">
+    <>
       <Select
         multiple
+        autoWidth
         native
         labelId="בחר את סוג החדר"
         id="selectRoom"
@@ -22,11 +23,11 @@ function CapacityPicker(props) {
       >
         {props.capacities.map((capacity) => (
           <option key={capacity} value={capacity}>
-            עד {capacity} משתתפים
+            {capacity} משתתפים
           </option>
         ))}
       </Select>
-    </div>
+    </>
   );
 
 }

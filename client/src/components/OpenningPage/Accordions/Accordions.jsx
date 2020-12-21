@@ -54,7 +54,7 @@ const AccordionDetails = withStyles((theme) => ({
 
 
 export default function Accordions(props) {
-  const [expanded, setExpanded] = React.useState("panel1");
+  const [expanded, setExpanded] = React.useState("");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -76,6 +76,8 @@ export default function Accordions(props) {
   const handleCapacityChange = (value) => {
     setSelectedCapacity(value)
     props.selectedCapacity(value);
+    setTimeout(()=>setExpanded(""),400)
+    
   };
 
   return (
@@ -134,7 +136,7 @@ export default function Accordions(props) {
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>
-            <b>משתתפים {selectedCapacity} עבור</b>
+            <b>עבור {selectedCapacity} משתתפים</b>
           </Typography>
           <img src="/images/edit_icon.svg" alt="" />
         </AccordionSummary>
@@ -142,7 +144,7 @@ export default function Accordions(props) {
         <AccordionDetails>
           <CapacityPicker
             selectedCapacity={handleCapacityChange}
-            capacities={[4, 7, 14]}
+            capacities={[2, 4, 7, 14, 18 ,25, 40]}
           />
         </AccordionDetails>
       </Accordion>
