@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import {
@@ -46,13 +46,21 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+ 
+
 
 export default function AlertDialog(props) {
-  const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
+  useEffect(()=>{
+    
+  },[])
+  const classes = useStyles();
+
 
   const handleClickOpen = () => {
+     axios.post('http://localhost:5555/get_room',{reservation :reservation})
+     .then(res => console.log(res))
     setOpen(true);
   };
 
@@ -60,6 +68,8 @@ export default function AlertDialog(props) {
     setOpen(false);
   };
   let reservation = props.reservation;
+
+
  
   return (
     <div>
