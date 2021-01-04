@@ -1,4 +1,5 @@
 import React from 'react';
+import './CapacityPicker.css';
 import {Select, MenuItem} from '@material-ui/core';
 
 function CapacityPicker(props) {
@@ -9,16 +10,15 @@ function CapacityPicker(props) {
   
 
   return (
-    <>
+    <div className="capacity_select_warrper">
       <Select
+        className="capacity_select"
         multiple
-        autoWidth
         native
         labelId="בחר את סוג החדר"
         id="selectRoom"
         value={props.capacities[0]}
         onChange={handleCapacityChange}
-        className="select"
         style={{ width:"100%", padding: "0 20px" }}
       >
         {props.capacities.map((capacity) => (
@@ -27,7 +27,7 @@ function CapacityPicker(props) {
           </option>
         ))}
       </Select>
-    </>
+    </div>
   );
 
 }
