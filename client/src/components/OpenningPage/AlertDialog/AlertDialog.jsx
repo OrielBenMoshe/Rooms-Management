@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     button: {
         width: "100%",
         pedding: "0 5px",
+        backgroundColor: "#00aaaf",
+        color: "white",
+        margin: "2px",
     },
     closeButton: {
         position: 'absolute',
@@ -70,7 +73,7 @@ export default function AlertDialog(props) {
  
   return (
     <div>
-      <Button className={classes.button} variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button className={classes.button} variant="contained" onClick={handleClickOpen}>
         {props.buttonText}
       </Button>
       <Dialog
