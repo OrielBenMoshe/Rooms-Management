@@ -53,18 +53,12 @@ function OpenningPage() {
 
 
   const [reservation,setReservation] = useState({
-<<<<<<< HEAD
-    theDay: new Date().getDate(),
-    theMonth: new Date().getMonth() +1,
-    startAt: "08:30",
-    endAt: "16:30",
-=======
     theDay: addZero(theCurrentDate.getDate()),
     theMonth: addZero(theCurrentDate.getMonth() !== 12 ? theCurrentDate.getMonth() +1 : 1),
-    startAt: startTime ,
-    endAt: endTime,
->>>>>>> aa719dcf6965449cc2af043e11b02b71807fa872
+    startAt: '21:00' ,
+    endAt: '21:45',
     capacity: 2,
+    user_id : '5fde115b712de221240ff0e6'
   });
   
 
