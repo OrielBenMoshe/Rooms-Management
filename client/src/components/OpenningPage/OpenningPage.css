@@ -1,0 +1,11 @@
+.submitWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid #DEDEDE;
+    height: 65px;
+  }
+
+  .AlertDialog {
+    width: 100%;
+  }

@@ -2,6 +2,12 @@
   box-sizing: border-box;
   padding: 0;
 }
+
+.app,
+#root{
+  background-color: #3e7d78;
+}
+
 .MuiCard-root {
   box-shadow: none !important;
 }

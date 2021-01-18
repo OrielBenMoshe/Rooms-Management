@@ -1,6 +1,7 @@
 import Context from './../../Context';
 import React, { useState } from "react";
 import {Container} from '@material-ui/core'
+import "./OpenningPage.css";
 
 import Header from './../header/Header';
 
@@ -34,6 +35,10 @@ function OpenningPage() {
     },
     title: {
     color: theme.palette.primary.main,
+    },
+    submitWrapper: {
+      borderTop: '2px solid #DEDEDE',
+      height: '65px',
     }
     }));
   const classes = useStyles();
@@ -101,7 +106,7 @@ function OpenningPage() {
   
   
   return (
-    <Container maxWidth="sm">
+    // <Container maxWidth="sm">
       <div className={`OpenningPage ${classes.root}`}>
           <Header/>
           <div className={classes.notification}>
@@ -119,16 +124,17 @@ function OpenningPage() {
             <TimePicker selectedTime={handleTimeChange} lable="משעה" theTime={reservation.startAt}/>
             <TimePicker selectedTime={handleTimeChange} lable="עד שעה" theTime={reservation.endAt}/>
             <CapacityPicker selectedCapacity={handleCapacityChange} capacitiesArray="2"/> */}
-
-            <AlertDialog 
-              buttonText="מתאים לי בדיוק"
-              buttonType="submit"
-              reservation={reservation}
-            />
+            <div className="submitWrapper">
+              <AlertDialog 
+                buttonText="מתאים לי בדיוק"
+                buttonType="submit"
+                reservation={reservation}
+              />
+            </div>
             {/* <TransitionsModal buttonText="מתאים לי בדיוק"/> */}
           </form>
       </div>
-    </Container>  
+    // </Container>  
   );
 }
 

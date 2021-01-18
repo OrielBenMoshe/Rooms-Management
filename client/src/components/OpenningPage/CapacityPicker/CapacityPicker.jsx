@@ -16,7 +16,6 @@ function CapacityPicker(props) {
         multiple
         native
         labelId="בחר את סוג החדר"
-        id="selectRoom"
         value={props.capacities[0]}
         onChange={handleCapacityChange}
         style={{ width:"100%", padding: "0 20px" }}
