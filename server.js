@@ -31,6 +31,14 @@ app.get("/", (req, res) => {
 app.post("/get_room", async (req, res) => {
   console.log(req.body);
 
+  let reservationForClient = {
+    id_room: "",
+    id_client: "",
+    date: "",
+    start: "",
+    end: "",
+  };
+
   //the date we make the reservation
   let date = `${req.body.reservation.theMonth}/${
     req.body.reservation.theDay
@@ -41,7 +49,7 @@ app.post("/get_room", async (req, res) => {
     "Sunday",
     "Monday",
     "Tuesday",
-    "Wedensday",
+    "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
@@ -72,59 +80,127 @@ app.post("/get_room", async (req, res) => {
       return a.capacity - b.capacity;
     });
 
-    matchingRooms.forEach(async (room) => {
+    //go through each room
+    for (let i = 0; i < matchingRooms.length; i++) {
       //the reservations of the room on the date we got from client
-
       let roomReservations = await models.Reservation.find({
-        id_room: room._id,
+        id_room: matchingRooms[i]._id,
         date: date,
       });
 
+      console.log("roomReservation : " + roomReservations);
+      //there are no reservations for this room on this day. make the reservation
       if (roomReservations.length === 0) {
-        console.log(
-          "there are no reservations for this day,make the reservation"
+        models.Reservation.create({
+          id_room: matchingRooms[i]._id,
+          id_client: req.body.reservation.user_id,
+          date: date,
+          start: req.body.reservation.startAt,
+          end: req.body.reservation.endAt,
+        }).then(() => {
+          res
+            .status(200)
+            .json(
+              `reservation on ${date} ${
+                (req.body.reservation.startAt, req.body.reservation.endAt)
+              } made succsesfully1`
+            );
+        });
+
+        break;
+      }
+      //checks if starting hour we got matches starting/ending hour of a reservation if it its,check the next room
+      let startEndEqualCheck = roomReservations.some((reservation) => {
+        return (
+          reservation.start === req.body.reservation.startAt,
+          reservation.end === req.body.reservation.endAt
         );
+      });
+
+      if (startEndEqualCheck) {
+        console.log("starting or end hour was equal to some reservation");
+        res.status(406);
+        // .json("there is already some reservation on the hours we got ");
+        continue;
       }
 
-      //checks if starting hour we got matches starting hour of a reservation if it its,check the next room
-      if (
-        req.body.reservation.startAt ===
-        roomReservations.forEach((reservation) => {
-          return reservation.start;
-        })
-      ) {
-        return;
-      }
       // if we didnt found , get all start hours and end hours from reservations and turn them to millesecends
 
       let reservationsHoursMill = roomReservations.map((reservation) => {
-        return [
-          Date.parse(`01/01/2011 ${reservation.start}`),
-          Date.parse(`01/01/2011 ${reservation.end}`),
-        ];
+        let start = reservation.start
+          .split("")
+          .filter((x) => x !== ":")
+          .join("");
+        let end = reservation.end
+          .split("")
+          .filter((x) => x !== ":")
+          .join("");
+        return { start: +start, end: +end };
       });
       console.log("reservationsHoursMill  : " + reservationsHoursMill);
 
-      let convertStartEndToMill = [
-        Date.parse(`01/01/2011 ${req.body.reservation.startAt}`),
-        Date.parse(`01/01/2011 ${req.body.reservation.endAt}`),
-      ];
-      console.log("convertStartEndToMill : " + convertStartEndToMill);
+      let clientStartNum = req.body.reservation.startAt
+        .split("")
+        .filter((x) => x !== ":")
+        .join("");
+      let clientEndNum = req.body.reservation.endAt
+        .split("")
+        .filter((x) => x !== ":")
+        .join("");
 
       //check if there are any numbers in reservationsHoursMill that bigger than convertStartEndToMill[0]
       //  and any numbers are smaller than  convertStartEndToMill[1]
       //if there are any ,go to next room
       //if not , make reservation
-    });
+
+      let checkForHoursBetween = reservationsHoursMill.some((reservatoin) => {
+        if (
+          (clientStartNum >= reservatoin.start &&
+            clientEndNum <= reservatoin.end) ||
+          (reservatoin.start > clientStartNum &&
+            clientEndNum > reservatoin.end) ||
+          (reservatoin.end > clientStartNum && clientEndNum > reservatoin.end)
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      console.log(checkForHoursBetween);
+
+      if (checkForHoursBetween) {
+        continue;
+      } else {
+        models.Reservation.create({
+          id_room: matchingRooms[i]._id,
+          id_client: req.body.reservation.user_id,
+          date: date,
+          start: req.body.reservation.startAt,
+          end: req.body.reservation.endAt,
+        })
+          .then(() => {
+            res
+              .status(200)
+              .json(
+                `reservation on ${date} ${
+                  (req.body.reservation.startAt, req.body.reservation.endAt)
+                } made succsesfully2`
+              );
+          })
+          .catch((err) => {
+            res.send(err);
+          });
+        break;
+      }
+    }
   }
-  //there are no rooms that match the hours
+  //there are no rooms that match the hours or capacity
   else {
     res
       .status(404)
-      .json("we cant find any room for u that matches hours and capacity ");
+      .send("we cant find any room for u that matches hours and capacity ");
   }
-
-  res.send("hello from serversasas ~!");
 });
 
 const port = process.env.PORT || 8888;
