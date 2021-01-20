@@ -55,6 +55,7 @@ function App() {
   return (
   
     <ThemeProvider theme={theme}>
+      <div dir="rtl">
       <CssBaseline /> 
       <Router>
         <div className="App">
@@ -85,6 +86,7 @@ function App() {
           </UserProvider>
         </div>
       </Router>
+      </div>
     </ThemeProvider>
 
   );

@@ -1,14 +1,57 @@
 * {
   box-sizing: border-box;
   padding: 0;
+  font-family: 'Assistant' !important;
+  font-style: normal !important;
+
 }
 .PrivateTabIndicator-colorPrimary-24 {
   background-color: #00aaaf !important;
 }
-.MuiTab-textColorPrimary.Mui-selected {
+.MuiTab-textColorPrimary.Mui-selected,
+.MuiPickersDay-current:not(.MuiPickersDay-daySelected),
+.the_date,
+.MuiPickersCalendarHeader-iconButton:not(.Mui-disabled)
+{
   color: #00aaaf !important;
 }
 
+.MuiSvgIcon-root{
+  font-size: 1.8rem !important;
+}
+
+.date_label{
+  padding: 0 20px;
+  border-bottom: 1px solid rgb(223 223 223);
+  height: 66.22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.is_today{
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.MuiPickersBasePicker-pickerView.MuiPickersBasePicker-pickerViewLandscape {
+  width: 100%;
+  padding: 0;
+}
+
+.MuiPickersBasePicker-pickerView{
+  max-width: none !important;
+}
+
+.MuiPickersDatePickerRoot-toolbarLandscape{
+  padding: none !important;
+}
+
+.MuiPickersCalendarHeader-daysHeader,
+.MuiPickersCalendar-week{
+  justify-content: space-around !important;
+  padding: 0px 10px;
+}
 .MuiPickersDatePickerRoot-toolbar {
   position: relative;
   text-align: right;
@@ -45,8 +88,7 @@
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: none !important;
 }
 .MuiTypography-h4 {
   font-size: 1.2rem !important;
@@ -101,16 +143,4 @@
   margin-right: auto;
   padding-left: 16px;
   padding-right: 16px;
-}
-
-.MuiPickersCalendarHeader-switchHeader {
-  display: flex;
-  margin-top: 4px;
-  align-items: center;
-  margin-bottom: 8px;
-  justify-content: space-between;
-  direction: ltr !important;
-}
-.MuiPaper-elevation1 {
-  box-shadow: none !important;
 }

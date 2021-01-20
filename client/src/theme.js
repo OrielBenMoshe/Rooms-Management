@@ -4,5 +4,6 @@ const theme = createMuiTheme({
   palette: {
     primary: { 500: "#467fcf" },
   },
+  direction: 'rtl',
 });
 export default theme;
