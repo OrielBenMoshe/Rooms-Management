@@ -51,23 +51,24 @@ const useStyles = makeStyles((theme) => ({
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
+    window.location.href = '/';
   };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
     setAnchorEl(null);
   };
 
   return (
     <div>
       <FormGroup>
-        <FormControlLabel
+        {/* <FormControlLabel
           control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
           label={auth ? 'Logout' : 'Login'}
-        />
+        /> */}
       </FormGroup>
 
       <AppBar variant='secendery' position="static">
@@ -89,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
               {/* This is the menu of the icon button */}
               <Menu
                 id="menu-appbar"
-                anchorEl={anchorEl}
+                anchorEl={anchorEl} 
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
@@ -106,7 +107,10 @@ const useStyles = makeStyles((theme) => ({
                   <Link to="/UserProfile">
                     <MenuItem onClick={handleClose}>פרופיל משתמש</MenuItem>                 
                   </Link>
-                  <MenuItem onClick={handleClose}>התנתקות</MenuItem>
+                  <Link to="/">
+                    <MenuItem onClick={handleChange}>התנתקות</MenuItem>
+                  </Link>
+
 
               </Menu>
             {auth && (

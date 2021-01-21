@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 import React, { useState, useEffect } from "react";
@@ -12,6 +11,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "./theme";
 
 import { UserProvider } from "./Context";
+
 
 function App() {
   const user = {
@@ -60,6 +60,9 @@ function App() {
               </li>
               <li>
                 <Link to="/Lobby">Lobby</Link>
+              </li>
+              <li>
+                <Link to="/Dialer">Dialer</Link>
               </li>
             </ul>
             <hr />

@@ -18,6 +18,7 @@
     "react-input-verification-code": "^0.6.4",
     "react-native": "^0.63.3",
     "react-native-confirmation-code-field": "^6.5.1",
+    "react-native-phone-call": "^1.0.9",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "react-spring": "^8.0.27",
