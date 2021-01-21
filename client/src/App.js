@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 
-import React, { useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Linking, Platform } from 'react-native';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +17,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
 
 import { UserProvider } from './Context';
+
 
 function App() {
 
@@ -66,6 +67,9 @@ function App() {
             </li>
             <li>
               <Link to="/Lobby">Lobby</Link>
+            </li>
+            <li>
+              <Link to="/Dialer">Dialer</Link>
             </li>
           </ul>
           <hr />  

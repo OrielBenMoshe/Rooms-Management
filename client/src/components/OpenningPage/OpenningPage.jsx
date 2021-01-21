@@ -11,9 +11,7 @@ import AlertDialog from './AlertDialog/AlertDialog';
 import CapacityPicker from './CapacityPicker/CapacityPicker';
 
 
-import {
-  Typography,
-  Button }     from '@material-ui/core'
+import {Typography,Button }     from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
 
