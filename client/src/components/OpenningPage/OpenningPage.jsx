@@ -7,9 +7,9 @@ import Header from './../header/Header';
 
 import Accordions from './Accordions/Accordions';
 import DayPicker from './DayPicker/DayPicker';
-import TimePicker from './TimePicker/TimePicker';
+import TimePicker from './Accordions/TimePicker/TimePicker';
 import AlertDialog from './AlertDialog/AlertDialog';
-import CapacityPicker from './CapacityPicker/CapacityPicker';
+import CapacityPicker from './Accordions/CapacityPicker/CapacityPicker';
 
 
 import {

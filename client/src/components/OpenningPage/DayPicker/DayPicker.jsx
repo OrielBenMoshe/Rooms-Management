@@ -1,21 +1,14 @@
 import React, { useState } from "react";
-import { TextField, Container } from "@material-ui/core";
 import {
   MuiPickersUtilsProvider,
-  KeyboardDatePicker,
   DatePicker,
-  Calendar,
 } from "@material-ui/pickers";
-
-import { makeStyles } from "@material-ui/core/styles";
 
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { he } from "date-fns/locale";
 import "./DayPicker.css";
 import { useEffect } from "react";
-import { Switch } from "react-router-dom";
-import SwitchBase from "@material-ui/core/internal/SwitchBase";
 
 const DayPicker = (props) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -33,6 +26,7 @@ const DayPicker = (props) => {
 
   // Check if the selected date is today, tommorow or next week.
   const isToday = (selectedDate) => {
+
     selectedDate = toReadableDate(selectedDate);
     const today = toReadableDate(new Date());
     let tomorrow = new Date();
@@ -42,24 +36,16 @@ const DayPicker = (props) => {
     nextWeek.setDate(nextWeek.getDate() + 7);
     nextWeek = toReadableDate(nextWeek);
   
-
-    console.log("selectedDate: ||  ", selectedDate);
-    console.log("today", today);
-    console.log("tomorrow", tomorrow);
-    console.log("nextWeek", nextWeek);
     switch (selectedDate) {
       case today:
-        console.log("today");
         setforToday("להיום");
         break;
 
       case tomorrow:
-        console.log("tomorrow");
         setforToday("למחר");
         break;
 
       case nextWeek:
-        console.log("nextWeek");
         setforToday("לשבוע הבא");
         break;
 
@@ -74,8 +60,6 @@ const DayPicker = (props) => {
     isToday(newDate);
     props.selectedDate(newDate);
   };
-
-  useEffect(() => {}, [selectedDate, forToday]);
 
   return (
     <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>

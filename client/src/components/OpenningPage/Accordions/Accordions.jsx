@@ -6,8 +6,13 @@ import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
-import TimePicker from "./../TimePicker/TimePicker";
-import CapacityPicker from "./../CapacityPicker/CapacityPicker";
+import TimePick from "./TimePicker/TimePicker";
+import { MuiPickersUtilsProvider, TimePicker } from "@material-ui/pickers";
+import CapacityPicker from "./CapacityPicker/CapacityPicker";
+
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import { he } from "date-fns/locale";
 
 const Accordion = withStyles({
   root: {
@@ -52,7 +57,6 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-
 export default function Accordions(props) {
   const [expanded, setExpanded] = React.useState("");
 
@@ -60,24 +64,24 @@ export default function Accordions(props) {
     setExpanded(newExpanded ? panel : false);
   };
 
-
-// Defined the reservation.
-  const [selectedStartAt, setSelectedStartAt] = useState(props.reservation.startAt)
-  const [selectedEndAt, setSelectedEndAt] = useState(props.reservation.endAt)
-  const [selectedCapacity, setSelectedCapacity] = useState(props.reservation.capacity)
+  // Defined the reservation.
+  const [selectedStartAt, setSelectedStartAt] = useState(
+    props.reservation.startAt
+  );
+  const [selectedEndAt, setSelectedEndAt] = useState(props.reservation.endAt);
+  const [selectedCapacity, setSelectedCapacity] = useState(
+    props.reservation.capacity
+  );
 
   const handleTimeChange = (value, lable) => {
-    lable === "משעה" ?
-      setSelectedStartAt(value) :
-      setSelectedEndAt(value);
+    lable === "משעה" ? setSelectedStartAt(value) : setSelectedEndAt(value);
     props.selectedTime(value, lable);
-  }
+  };
 
   const handleCapacityChange = (value) => {
-    setSelectedCapacity(value)
+    setSelectedCapacity(value);
     props.selectedCapacity(value);
-    setTimeout(()=>setExpanded(""),400)
-    
+    setTimeout(() => setExpanded(""), 400);
   };
 
   return (
@@ -97,11 +101,23 @@ export default function Accordions(props) {
         </AccordionSummary>
 
         <AccordionDetails>
-          <TimePicker
+          <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
+            <TimePicker
+              label="משעה"
+              autoOk
+              variant="static"
+              openTo="hours"
+              value={props.reservation.startAt}
+              onChange={handleTimeChange}
+              ampm={false}
+              disableToolbar={true}
+              minutesStep={15}
+            />
+          </MuiPickersUtilsProvider>
+          {/* <TimePick
             selectedTime={handleTimeChange}
-            lable="משעה"
             theTime={props.reservation.startAt}
-          />
+          /> */}
         </AccordionDetails>
       </Accordion>
 
@@ -120,10 +136,24 @@ export default function Accordions(props) {
         </AccordionSummary>
 
         <AccordionDetails>
-          <TimePicker
+          {/* <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
+            <TimePicker
+              label="עד שעה"
+              autoOk
+              variant="static"
+              openTo="hours"
+              value={props.reservation.endAt}
+              onChange={handleTimeChange}
+              ampm={false}
+              disableToolbar={true}
+              minutesStep={15}
+            />
+          </MuiPickersUtilsProvider> */}
+          <TimePick
+            label="עד שעה"
             selectedTime={handleTimeChange}
-            lable="עד שעה"
             theTime={props.reservation.endAt}
+            variant='outlined'
           />
         </AccordionDetails>
       </Accordion>
@@ -144,7 +174,7 @@ export default function Accordions(props) {
         <AccordionDetails>
           <CapacityPicker
             selectedCapacity={handleCapacityChange}
-            capacities={[2, 4, 7, 14, 18 ,25, 40]}
+            capacities={[2, 4, 7, 14, 18, 25, 40]}
           />
         </AccordionDetails>
       </Accordion>

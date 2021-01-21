@@ -1,8 +1,8 @@
 import React from 'react';
-import './TimePicker';
+import './TimePicker.css';
 import {TextField} from '@material-ui/core';
 
-function TimePicker(props) {
+function TimePick(props) {
 
   const handleTimeChange = (e) => {
     props.selectedTime(e.target.value, props.lable);
@@ -13,7 +13,6 @@ function TimePicker(props) {
       <TextField
         onChange={handleTimeChange}
         id="time"
-        label={props.lable}
         type="time"
         defaultValue={props.theTime}
         className="textField"
@@ -24,4 +23,4 @@ function TimePicker(props) {
 
 };
   
-export default TimePicker;
+export default TimePick;
