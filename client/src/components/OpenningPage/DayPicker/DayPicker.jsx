@@ -17,73 +17,84 @@ import { useEffect } from "react";
 import { Switch } from "react-router-dom";
 import SwitchBase from "@material-ui/core/internal/SwitchBase";
 
-
 const DayPicker = (props) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [forToday, setforToday] = useState('להיום');
-  const fmtOPT = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
-    
+  const [forToday, setforToday] = useState("להיום");
+  const fmtOPT = {
+    weekday: "long",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  };
+
+  const toReadableDate = (date) => {
+    return date.toLocaleDateString(undefined, fmtOPT);
+  };
+
   // Check if the selected date is today, tommorow or next week.
   const isToday = (selectedDate) => {
-    const today = new Date();
-    const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-    const nextWeek = new Date();
-      nextWeek.setDate(nextWeek.getDate() + 7);
+    selectedDate = toReadableDate(selectedDate);
+    const today = toReadableDate(new Date());
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow = toReadableDate(tomorrow);
+    let nextWeek = new Date();
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    nextWeek = toReadableDate(nextWeek);
+  
 
-      // console.log('selectedDate: ||  ', selectedDate);
-      switch (selectedDate) {
-       
-        case today:
-          console.log('today');
-          setforToday('להיום')
-          break;
+    console.log("selectedDate: ||  ", selectedDate);
+    console.log("today", today);
+    console.log("tomorrow", tomorrow);
+    console.log("nextWeek", nextWeek);
+    switch (selectedDate) {
+      case today:
+        console.log("today");
+        setforToday("להיום");
+        break;
 
-        case tomorrow:
-          console.log('tomorrow');
-          setforToday('למחר')
-          break;
+      case tomorrow:
+        console.log("tomorrow");
+        setforToday("למחר");
+        break;
 
-        case nextWeek:
-          console.log('nextWeek');
-          setforToday('לשבוע הבא')
-          break;
+      case nextWeek:
+        console.log("nextWeek");
+        setforToday("לשבוע הבא");
+        break;
 
-        default:
-          console.log('none of them');
-          break;
-      }
-      console.log('forToday: ~ ' , forToday);
-
+      default:
+        setforToday("לתאריך");
+        break;
+    }
   };
 
   const handleDateChange = (newDate) => {
     setSelectedDate(newDate);
-
     isToday(newDate);
     props.selectedDate(newDate);
   };
 
-  useEffect(() => {
-  }, [selectedDate, forToday]);
+  useEffect(() => {}, [selectedDate, forToday]);
 
   return (
-      <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
-        <div className="date_label">
-          <div className="is_today">{forToday}</div>
-          <div className="the_date">{selectedDate.toLocaleDateString(undefined, fmtOPT)}</div>
+    <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
+      <div className="date_label">
+        <div className="is_today">{forToday}</div>
+        <div className="the_date">
+          {selectedDate.toLocaleDateString(undefined, fmtOPT)}
         </div>
-        <DatePicker
-          variant="static"
-          value={selectedDate}
-          onChange={handleDateChange}
-          orientation="landscape"
-          disablePast={true}
-          disableToolbar={true}
-          shouldDisableDate={day => day.getDay() === 6}
-         
-        />
-      </MuiPickersUtilsProvider>
+      </div>
+      <DatePicker
+        variant="static"
+        value={selectedDate}
+        onChange={handleDateChange}
+        orientation="landscape"
+        disablePast={true}
+        disableToolbar={true}
+        shouldDisableDate={(day) => day.getDay() === 6}
+      />
+    </MuiPickersUtilsProvider>
   );
 };
 
