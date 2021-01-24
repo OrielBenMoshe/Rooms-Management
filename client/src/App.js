@@ -15,11 +15,13 @@ import { UserProvider } from "./Context";
 
 function App() {
   const user = {
-    name: "דניאל",
-    surName: "בן דוד",
-    city: "בנימין",
+    name: 'דניאל בן דוד',
+    phone: '050-3334444',
+    email: 'danielBenDa@gmail.com',
+    password: 123,
+    regularCustomer: true,
     credit: 8,
-    pasword: "1234",
+    client_reservation: [1,2,3]
   };
 
   const roomsArray = [

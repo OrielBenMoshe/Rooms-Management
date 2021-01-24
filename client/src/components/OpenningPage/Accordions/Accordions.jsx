@@ -112,6 +112,8 @@ export default function Accordions(props) {
               ampm={false}
               disableToolbar={true}
               minutesStep={15}
+              minTime={new Date() < new Date(0, 0, 0, 8) ? new Date(0, 0, 0, 8) : new Date()}
+              maxTime={new Date(0, 0, 0, 18)}
             />
           </MuiPickersUtilsProvider>
           {/* <TimePick
@@ -136,25 +138,24 @@ export default function Accordions(props) {
         </AccordionSummary>
 
         <AccordionDetails>
-          {/* <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
+          <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
             <TimePicker
               label="עד שעה"
               autoOk
               variant="static"
               openTo="hours"
               value={props.reservation.endAt}
-              onChange={handleTimeChange}
+              // onChange={handleTimeChange}
               ampm={false}
               disableToolbar={true}
               minutesStep={15}
             />
-          </MuiPickersUtilsProvider> */}
-          <TimePick
+          </MuiPickersUtilsProvider>
+          {/* <TimePick
             label="עד שעה"
             selectedTime={handleTimeChange}
             theTime={props.reservation.endAt}
-            variant='outlined'
-          />
+          /> */}
         </AccordionDetails>
       </Accordion>
 

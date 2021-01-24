@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Context from './../../Context';
 import {Link} from 'react-router-dom';
 //Material UI imports.
@@ -45,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
   const user = useContext(Context);
 
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [auth, setAuth] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const handleChange = (event) => {
@@ -61,6 +61,15 @@ const useStyles = makeStyles((theme) => ({
   const handleClose = (event) => {
     setAnchorEl(null);
   };
+
+  // ClientSchema:
+    // user_name: String,
+    // phone: String,
+    // email: String,
+    // password: String,
+    // regularCustomer: Boolean,
+    // credits: Number,
+    // client_reservation: [{ type: schema.Types.ObjectId, ref: "Reservation" }],
 
   return (
     <div>
@@ -87,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
                   <AccountCircle fontSize='small' />
               </IconButton>
 
-              {/* This is the menu of the icon button */}
+              {/*The menu of the icon button */}
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl} 
