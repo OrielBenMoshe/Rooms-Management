@@ -1,6 +1,6 @@
 import "./App.css";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import OpenningPage from "./components/OpenningPage/OpenningPage";
@@ -15,6 +15,7 @@ import { UserProvider } from "./Context";
 
 function App() {
   const user = {
+    user_id: '5fde115b712de221240ff0e6',
     name: 'דניאל בן דוד',
     phone: '050-3334444',
     email: 'danielBenDa@gmail.com',

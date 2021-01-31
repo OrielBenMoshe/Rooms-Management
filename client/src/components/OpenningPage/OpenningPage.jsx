@@ -1,8 +1,8 @@
 import Context from './../../Context';
-import React, { useState } from "react";
-import {Container} from '@material-ui/core'
+import React, { useContext, useState } from "react";
+import moment from 'moment';
+import * as Utils from './../../utils'
 import "./OpenningPage.css";
-
 import Header from './../header/Header';
 
 import Accordions from './Accordions/Accordions';
@@ -18,7 +18,7 @@ import { makeStyles } from '@material-ui/styles'
 
 
 function OpenningPage() {
-
+  const user = useContext(Context);
   const useStyles = makeStyles(theme => ({
     root: {
     backgroundColor: 'white',
@@ -40,35 +40,49 @@ function OpenningPage() {
       height: '65px',
     }
     }));
+
   const classes = useStyles();
 
-  const addZero = (i) => {
-    if (i < 10) {
-      i = "0" + i;
+  const increaseHour = (formatedTime) => {
+    let hour = formatedTime.slice(0, 2);
+    let minutes = formatedTime.slice(3);
+    parseInt(hour); 
+    hour == 24 ? hour = '01' : hour++;
+    return `${hour}:${minutes}`;
+  }
+
+
+  const CurrentDate =  new moment();
+  const defaultStart = Utils.roundUp(CurrentDate.format('HH:mm'));
+  const defaultEnd = increaseHour(defaultStart);
+
+  const intervalArray = (start, end, interval) => {
+    let timesArray = [];
+    let time = start;
+    console.log('time: ', moment(time, "HH:mm"))
+    while (time !== end) {
+      
+      time = end;
     }
-     
-    return i;
-  };
+  }
 
-
-  const theCurrentDate =  new Date();
-  const startTime = `${ addZero(theCurrentDate.getHours())}:${ addZero(theCurrentDate.getMinutes())}`;
-  const endTime = `${ addZero(theCurrentDate.getHours() !== 23 ? theCurrentDate.getHours() +1 : 0)}:${ addZero(theCurrentDate.getMinutes())}`;
-
+  intervalArray(defaultStart, defaultEnd, 30);
 
   const [reservation,setReservation] = useState({
-    theDay: addZero(theCurrentDate.getDate()),
-    theMonth: addZero(theCurrentDate.getMonth() !== 12 ? theCurrentDate.getMonth() +1 : 1),
-    startAt: startTime ,
-    endAt: endTime,
+    theDay: CurrentDate.format('dddd'),
+    theMonth: CurrentDate.format('MM'),
+    startAt: defaultStart,
+    endAt: defaultEnd,
     capacity: 2,
-    user_id : '5fde115b712de221240ff0e6'
+    user_id : user.user_id
   });
   
 
+  
+
+
 // Set the new Date that changed, to State.
   const handleDateChange = (newDate) => {
-    
     const reservationTemp = reservation;
     reservationTemp.theDay = newDate.getDate();
     reservationTemp.theMonth = newDate.getMonth() +1;
@@ -80,7 +94,6 @@ function OpenningPage() {
   
 // Set the new Time that changed, to State.
   const handleTimeChange = (value, lable) => {
-
     const reservationTemp = reservation;
 
     lable === "משעה" ? 
@@ -89,18 +102,15 @@ function OpenningPage() {
     setReservation(reservationTemp);
 
     console.log("The time has changed!" ,reservation);
-
   } 
  
   const handleCapacityChange = (value) => {
-
     const reservationTemp = reservation;
     
     reservationTemp.capacity = value;
     setReservation(reservationTemp);
 
     console.log("The capacity has changed!" ,reservation);
-
   }
 
   

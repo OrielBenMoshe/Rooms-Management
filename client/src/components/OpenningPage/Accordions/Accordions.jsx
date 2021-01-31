@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
-import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
 import TimePick from "./TimePicker/TimePicker";
 import { MuiPickersUtilsProvider, TimePicker } from "@material-ui/pickers";
@@ -101,25 +100,11 @@ export default function Accordions(props) {
         </AccordionSummary>
 
         <AccordionDetails>
-          <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
-            <TimePicker
-              label="משעה"
-              autoOk
-              variant="static"
-              openTo="hours"
-              value={props.reservation.startAt}
-              onChange={handleTimeChange}
-              ampm={false}
-              disableToolbar={true}
-              minutesStep={15}
-              minTime={new Date() < new Date(0, 0, 0, 8) ? new Date(0, 0, 0, 8) : new Date()}
-              maxTime={new Date(0, 0, 0, 18)}
-            />
-          </MuiPickersUtilsProvider>
-          {/* <TimePick
+          <TimePick
             selectedTime={handleTimeChange}
-            theTime={props.reservation.startAt}
-          /> */}
+            start={props.reservation.startAt}
+            end="17:30"
+          />
         </AccordionDetails>
       </Accordion>
 
@@ -138,24 +123,12 @@ export default function Accordions(props) {
         </AccordionSummary>
 
         <AccordionDetails>
-          <MuiPickersUtilsProvider locale={he} utils={DateFnsUtils}>
-            <TimePicker
-              label="עד שעה"
-              autoOk
-              variant="static"
-              openTo="hours"
-              value={props.reservation.endAt}
-              // onChange={handleTimeChange}
-              ampm={false}
-              disableToolbar={true}
-              minutesStep={15}
-            />
-          </MuiPickersUtilsProvider>
-          {/* <TimePick
+          <TimePick
             label="עד שעה"
             selectedTime={handleTimeChange}
-            theTime={props.reservation.endAt}
-          /> */}
+            start={props.reservation.startAt}
+            end="18:00"
+          />
         </AccordionDetails>
       </Accordion>
 
