@@ -1,4 +1,6 @@
+
 import React, { useState } from "react";
+import * as Utils from './../../../utils';
 import "./Accordions.css";
 import { withStyles } from "@material-ui/core/styles";
 import MuiAccordion from "@material-ui/core/Accordion";
@@ -57,7 +59,7 @@ const AccordionDetails = withStyles((theme) => ({
 }))(MuiAccordionDetails);
 
 export default function Accordions(props) {
-  const [expanded, setExpanded] = React.useState("");
+  const [expanded, setExpanded] = useState("");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -67,6 +69,7 @@ export default function Accordions(props) {
   const [selectedStartAt, setSelectedStartAt] = useState(
     props.reservation.startAt
   );
+
   const [selectedEndAt, setSelectedEndAt] = useState(props.reservation.endAt);
   const [selectedCapacity, setSelectedCapacity] = useState(
     props.reservation.capacity
@@ -76,12 +79,15 @@ export default function Accordions(props) {
     lable === "משעה" ? setSelectedStartAt(value) : setSelectedEndAt(value);
     props.selectedTime(value, lable);
   };
-
+   
   const handleCapacityChange = (value) => {
     setSelectedCapacity(value);
     props.selectedCapacity(value);
     setTimeout(() => setExpanded(""), 400);
   };
+
+  const timesArray = Utils.timesArrayBySteps('08:00', '18:00', 30);
+
 
   return (
     <div>
@@ -100,10 +106,11 @@ export default function Accordions(props) {
         </AccordionSummary>
 
         <AccordionDetails>
+          {/* Content */}
           <TimePick
             selectedTime={handleTimeChange}
             start={props.reservation.startAt}
-            end="17:30"
+            timesArray={timesArray}
           />
         </AccordionDetails>
       </Accordion>
@@ -123,11 +130,12 @@ export default function Accordions(props) {
         </AccordionSummary>
 
         <AccordionDetails>
+          {/* Content */}
           <TimePick
             label="עד שעה"
             selectedTime={handleTimeChange}
             start={props.reservation.startAt}
-            end="18:00"
+            timesArray={timesArray}
           />
         </AccordionDetails>
       </Accordion>

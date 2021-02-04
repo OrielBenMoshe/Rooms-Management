@@ -56,17 +56,8 @@ function OpenningPage() {
   const defaultStart = Utils.roundUp(CurrentDate.format('HH:mm'));
   const defaultEnd = increaseHour(defaultStart);
 
-  const intervalArray = (start, end, interval) => {
-    let timesArray = [];
-    let time = start;
-    console.log('time: ', moment(time, "HH:mm"))
-    while (time !== end) {
-      
-      time = end;
-    }
-  }
+  
 
-  intervalArray(defaultStart, defaultEnd, 30);
 
   const [reservation,setReservation] = useState({
     theDay: CurrentDate.format('dddd'),
