@@ -7,9 +7,7 @@ import Header from './../header/Header';
 
 import Accordions from './Accordions/Accordions';
 import DayPicker from './DayPicker/DayPicker';
-import TimePicker from './Accordions/TimePicker/TimePicker';
 import AlertDialog from './AlertDialog/AlertDialog';
-import CapacityPicker from './Accordions/CapacityPicker/CapacityPicker';
 
 
 import {Typography,Button }     from '@material-ui/core'
@@ -42,19 +40,9 @@ function OpenningPage() {
     }));
 
   const classes = useStyles();
-
-  const increaseHour = (formatedTime) => {
-    let hour = formatedTime.slice(0, 2);
-    let minutes = formatedTime.slice(3);
-    parseInt(hour); 
-    hour == 24 ? hour = '01' : hour++;
-    return `${hour}:${minutes}`;
-  }
-
-
   const CurrentDate =  new moment();
   const defaultStart = Utils.roundUp(CurrentDate.format('HH:mm'));
-  const defaultEnd = increaseHour(defaultStart);
+  const defaultEnd = Utils.increaseHour(defaultStart);
 
   
 
@@ -62,6 +50,7 @@ function OpenningPage() {
   const [reservation,setReservation] = useState({
     theDay: CurrentDate.format('dddd'),
     theMonth: CurrentDate.format('MM'),
+    // theYear: CurrentDate.format('Y'),
     startAt: defaultStart,
     endAt: defaultEnd,
     capacity: 2,
@@ -84,10 +73,10 @@ function OpenningPage() {
   };
   
 // Set the new Time that changed, to State.
-  const handleTimeChange = (value, lable) => {
+  const handleTimeChange = (value, label) => {
     const reservationTemp = reservation;
 
-    lable === "משעה" ? 
+    label === "משעה" ? 
       reservationTemp.startAt = value : 
       reservationTemp.endAt = value;
     setReservation(reservationTemp);
@@ -121,10 +110,6 @@ function OpenningPage() {
               selectedTime={handleTimeChange}
               selectedCapacity={handleCapacityChange}
               />
-            {/* 
-            <TimePicker selectedTime={handleTimeChange} lable="משעה" theTime={reservation.startAt}/>
-            <TimePicker selectedTime={handleTimeChange} lable="עד שעה" theTime={reservation.endAt}/>
-            <CapacityPicker selectedCapacity={handleCapacityChange} capacitiesArray="2"/> */}
             <div className="submitWrapper">
               <AlertDialog 
                 buttonText="מתאים לי בדיוק"
@@ -132,7 +117,6 @@ function OpenningPage() {
                 reservation={reservation}
               />
             </div>
-            {/* <TransitionsModal buttonText="מתאים לי בדיוק"/> */}
           </form>
       </div>
     // </Container>  

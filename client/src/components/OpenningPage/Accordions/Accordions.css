@@ -1,9 +1,67 @@
 .MuiAccordionSummary-content {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
 }
 
 .selected_time {
-    font-size: 12px;
+  font-size: 12px;
 }
+.WithStyles\(ForwardRef\(AccordionDetails\)\)-root-21{
+    padding: 3px !important;
+
+}
+select{
+    padding: 0 !important;
+}
+option {
+  padding: 10px 0px;
+  border-bottom: 1px solid #b2adada6;
+  transition: all 0.1s;
+  font-size: 18px;
+  margin: 0 12px;
+}
+option:last-child {
+  border-bottom: none;
+}
+option:hover {
+  background-color: #00aaaf;
+  color: white;
+}
+
+.capacity_select_warrper,
+.time_select_warrper {
+  /* height: 150px; */
+  width: 100%;
+}
+
+.time_select,
+.capacity_select{
+    padding: 0  !important;
+}
+.MuiSelect-select.MuiSelect-select {
+  text-align: center;
+  padding-right: 0 !important;
+}
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-track{
+    background-color: #00a9af0e;
+    border-radius: 5px;
+
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+	background-color: #00a9afd7;
+    height: 5px;
+}
+
+

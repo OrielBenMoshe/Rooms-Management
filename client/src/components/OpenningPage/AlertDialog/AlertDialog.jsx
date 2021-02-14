@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import * as Utils from './../../../utils';
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
@@ -90,7 +91,7 @@ export default function AlertDialog(props) {
         <DialogContent>
         
             <p>שופר - חדר עד 6 משתתפים</p>
-            <p>בתאריך: {reservation.theDay}/{reservation.theMonth}</p>
+            <p>בתאריך: {Utils.addZero(reservation.theDay)}/{Utils.addZero(reservation.theMonth)}</p>
             <p>{reservation.startAt}-{reservation.endAt}</p>
             <DialogContentText id="alert-dialog-description">
                 לשמור לך אותו תמורת  אסימונים?

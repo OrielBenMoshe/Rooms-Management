@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import './Header.css';
 import Context from './../../Context';
 import {Link} from 'react-router-dom';
 //Material UI imports.

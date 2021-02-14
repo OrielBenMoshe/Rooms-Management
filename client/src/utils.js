@@ -47,7 +47,7 @@ export const timeToMinutes = (time /** 'HH:MM' */) => {
 
 export const minutesToTime = (minutes) => {
   if (minutes > 1499) return console.error('invalid time.');
-  console.log('minutes ', minutes);
+  // console.log('minutes ', minutes);
 
   let hours = minutes / 60;
   minutes = Math.round((hours - Math.floor(hours)) * 60); 
@@ -56,7 +56,7 @@ export const minutesToTime = (minutes) => {
   minutes = addZero(minutes);
   hours = addZero(hours);
 
-  console.log('hours ', hours, 'minutes ', minutes);
+  // console.log('hours ', hours, 'minutes ', minutes);
   return `${hours}:${minutes}`;
 }
 
@@ -72,3 +72,11 @@ while (stepInt < endInt) {
 }
   return timesArray;
 };
+
+export const increaseHour = (formatedTime) => {
+  let hour = formatedTime.slice(0, 2);
+  let minutes = formatedTime.slice(3);
+  parseInt(hour); 
+  hour == 24 ? hour = '01' : hour++;
+  return `${hour}:${minutes}`;
+}

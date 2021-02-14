@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+root{
+  --turquoise: #3e7d78;
+}
+
 .app,
 #root{
   background-color: #3e7d78;
@@ -46,7 +50,7 @@
 }
 .MuiPickersToolbar-toolbarLandscape {
   height: auto;
-  padding: 8px;
+  padding: 10px;
   max-width: 50% !important;
   justify-content: flex-start;
 }
@@ -66,3 +70,5 @@
   line-height: 1.235;
   letter-spacing: 0.00735em;
 }
+
+.MuiInput-underline:before{ border-bottom: none !important; }

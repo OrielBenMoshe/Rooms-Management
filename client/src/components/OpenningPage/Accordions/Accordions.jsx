@@ -1,14 +1,14 @@
-
 import React, { useState } from "react";
-import * as Utils from './../../../utils';
+import * as Utils from "./../../../utils";
 import "./Accordions.css";
 import { withStyles } from "@material-ui/core/styles";
+
 import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
+
 import Typography from "@material-ui/core/Typography";
-import TimePick from "./TimePicker/TimePicker";
-import { MuiPickersUtilsProvider, TimePicker } from "@material-ui/pickers";
+import TimePicker from "./TimePicker/TimePicker";
 import CapacityPicker from "./CapacityPicker/CapacityPicker";
 
 import "date-fns";
@@ -75,19 +75,20 @@ export default function Accordions(props) {
     props.reservation.capacity
   );
 
-  const handleTimeChange = (value, lable) => {
-    lable === "משעה" ? setSelectedStartAt(value) : setSelectedEndAt(value);
-    props.selectedTime(value, lable);
+  const handleTimeChange = (value, label) => {
+    console.log('label ', label);
+    label === "משעה" ? setSelectedStartAt(value) : setSelectedEndAt(value);
+    props.selectedTime(value, label);
+    setTimeout(() => setExpanded(""), 400);
   };
-   
+
   const handleCapacityChange = (value) => {
     setSelectedCapacity(value);
     props.selectedCapacity(value);
     setTimeout(() => setExpanded(""), 400);
   };
 
-  const timesArray = Utils.timesArrayBySteps('08:00', '18:00', 30);
-
+  const timesArray = Utils.timesArrayBySteps("08:00", "18:00", 30);
 
   return (
     <div>
@@ -107,7 +108,8 @@ export default function Accordions(props) {
 
         <AccordionDetails>
           {/* Content */}
-          <TimePick
+          <TimePicker
+            label="משעה"
             selectedTime={handleTimeChange}
             start={props.reservation.startAt}
             timesArray={timesArray}
@@ -131,7 +133,7 @@ export default function Accordions(props) {
 
         <AccordionDetails>
           {/* Content */}
-          <TimePick
+          <TimePicker
             label="עד שעה"
             selectedTime={handleTimeChange}
             start={props.reservation.startAt}
