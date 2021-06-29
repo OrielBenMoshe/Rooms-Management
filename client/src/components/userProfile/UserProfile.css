@@ -1,13 +1,37 @@
-#UserProfile{
+.userProfile{
   /* background-color: theme.palette.background.paper; */
-  margin: "auto";
-  overflow: "hidden";
+  margin: auto;
+  overflow: hidden;
 }
-#UserProfile .greeting{
-  background-color: "#f4f4f4";
-  padding: "4rem";
-  text-align: "center";
+.userProfile .user_details_container{
+  background-color: var(--bg-gray);
+  padding: 4rem;
+  text-align: center;
+  border-radius: unset;
 }
-#UserProfile .tab{
-  background-color: "#fff";
+.user_details_container button{
+  position: relative;
+  right: 145px;
+  top: -60px
+}
+.user_details_container .MuiSvgIcon-root{
+  color: var(--turquoise);
+  font-size: unset;
+  width: 30px;
+  height: 30px;
+}
+.user_image .camera{
+  position: relative;
+  right: -65px;
+}
+.user_details_container p{
+  position: relative;
+}
+.user_details_container p .edit{
+  position: absolute;
+  right: 7px;
+  top: 6px;
+}
+.user_details_container p:last-child .edit{
+  right: 47px;
 }

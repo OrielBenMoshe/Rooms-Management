@@ -5,13 +5,13 @@
 
 :root {
   /* Color Palette */
-  --turquoise: #3e7d78;
-  --bg-gray: #cccccc;
+  --turquoise: #00AAAF;
+  --bg-gray: #e6e6e6;
 }
 
 .app,
 #root{
-  background-color: #3e7d78;
+  background-color: var(--turquoise);
 }
 
 .MuiCard-root {
