@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   padding: 0;
-  font-family: 'Assistant' !important;
   font-style: normal !important;
 
 }
@@ -93,7 +92,6 @@
 .MuiTypography-h4 {
   font-size: 1.2rem !important;
   text-align: right !important;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   line-height: 1.235;
   letter-spacing: 0.00735em;
@@ -114,7 +112,6 @@
 }
 .MuiTypography-subtitle1 {
   font-size: 1rem;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   line-height: 1.75;
   letter-spacing: 0.00938em;

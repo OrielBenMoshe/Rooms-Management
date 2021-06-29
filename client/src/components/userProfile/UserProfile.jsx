@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Header from "../header/Header";
 import Context from './../../Context';
-
+import "./UserProfile.css";
 
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
@@ -53,26 +53,7 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    margin: "auto",
-    width: 345,
-    overflow: "hidden",
-  },
-  greeting: {
-    backgroundColor: "#f4f4f4",
-    padding: "4rem",
-    textAlign: "center",
-  },
-  tab: {
-    backgroundColor: "#fff",
-  },
-}));
-
 function UserProfile({ history }) {
-  const classes = useStyles();
-  const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const user = useContext(Context);
 
@@ -85,11 +66,9 @@ function UserProfile({ history }) {
   };
 
   return (
-    <Container alginContent="center">
-      <div className={classes.root}>
-        <Header />
-        <div>
-            <Card className={classes.greeting} variant="none" elevation={0}>
+      <div id="UserProfile">
+        <Header/>
+            <Card className="greeting" variant="none" elevation={0}>
               <Button
                 onClick={() => {
                   history.goBack();
@@ -118,7 +97,7 @@ function UserProfile({ history }) {
                 gutterBottom
                 variant="body2"
                 component="p"
-                className={(classes.title, classes.HebrewtextAlgin)}
+                className=""
               >
                 {user.email}
                 <EditOutlined
@@ -137,7 +116,7 @@ function UserProfile({ history }) {
                 gutterBottom
                 variant="body2"
                 component="p"
-                className={(classes.title, classes.HebrewtextAlgin)}
+                className=""
               >
                 {user.phone}
                 <EditOutlined
@@ -163,12 +142,12 @@ function UserProfile({ history }) {
               aria-label="full width tabs example"
             >
               <Tab
-                className={classes.tab}
+                className="tab"
                 label="חדרים מוזמנים"
                 {...a11yProps(0)}
               />
               <Tab
-                className={classes.tab}
+                className="tab"
                 label="הסטורית הזמנות"
                 {...a11yProps(1)}
               />
@@ -176,21 +155,19 @@ function UserProfile({ history }) {
           </AppBar>
 
           <SwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            axis="x-reverse"
             index={value}
             onChangeIndex={handleChangeIndex}
           >
-            <TabPanel value={value} index={0} dir={theme.direction}>
+            <TabPanel value={value} index={0}>
               <Item />
               <Item />
             </TabPanel>
-            <TabPanel value={value} index={1} dir={theme.direction}>
+            <TabPanel value={value} index={1}>
               <Item />
             </TabPanel>
           </SwipeableViews>
         </div>
-      </div>
-    </Container>
   );
 }
 export default withRouter(UserProfile);

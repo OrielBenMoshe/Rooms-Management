@@ -1,0 +1,13 @@
+#UserProfile{
+  /* background-color: theme.palette.background.paper; */
+  margin: "auto";
+  overflow: "hidden";
+}
+#UserProfile .greeting{
+  background-color: "#f4f4f4";
+  padding: "4rem";
+  text-align: "center";
+}
+#UserProfile .tab{
+  background-color: "#fff";
+}
