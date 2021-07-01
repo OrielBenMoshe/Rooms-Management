@@ -1,5 +1,7 @@
+*{
+  direction: rtl;
+}
 html {
-  direction: rtl !important;
   background: #cbcccd;
 }
 body {

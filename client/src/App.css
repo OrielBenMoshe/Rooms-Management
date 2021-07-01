@@ -73,3 +73,7 @@
 }
 
 .MuiInput-underline:before{ border-bottom: none !important; }
+
+.PrivateTabIndicator-colorPrimary-6 {
+  background-color: var(--turquoise) !important;
+}

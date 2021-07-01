@@ -1,17 +1,16 @@
 import React, { useContext } from "react";
 import Header from "../header/Header";
 import Context from './../../Context';
-import "./UserProfile.css";
+import "./UserProfile.scss";
 
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Item from "../item";
+import Reservation from "./Reservation";
 import { Card, Button, Container } from "@material-ui/core";
 
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
@@ -68,6 +67,7 @@ function UserProfile({ history }) {
   return (
     <div className="userProfile">
       <Header />
+      {/* פרטי משתמש */}
       <Card className="user_details_container" variant="none" elevation={0}>
         <Button onClick={ () => { history.goBack();} } >
           <ArrowBack/>
@@ -108,18 +108,21 @@ function UserProfile({ history }) {
           />
         </Tabs>
       </AppBar>
-
       <SwipeableViews
         axis="x-reverse"
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0}>
-          <Item />
-          <Item />
+        <TabPanel className="tab_content" value={value} index={0}>
+          <Reservation />
+          <Reservation />
+          <Reservation />
+          <Reservation />
         </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Item />
+        <TabPanel className="tab_content" value={value} index={1}>
+          <Reservation />
+          <Reservation />
+          <Reservation />
         </TabPanel>
       </SwipeableViews>
     </div>
