@@ -1,0 +1,27 @@
+.verification{
+  *{ 
+    color: white;
+    text-align: center;
+  }
+  form{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-block: 20px;
+    
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .MuiInputBase-root {
+      width: 38px;
+      border-bottom: 3px solid white;
+      margin-inline: 4px;
+      color: white;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 39px;
+    }
+  }
+}

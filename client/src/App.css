@@ -3,6 +3,18 @@
   padding: 0;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+ul{
+  list-style: none;
+}
+h2{
+  font-weight: 300;
+  font-size: 24px;
+}
+
 :root {
   /* Color Palette */
   --turquoise: #00AAAF;
@@ -12,6 +24,7 @@
 .app,
 #root{
   background-color: var(--turquoise);
+  height: 640px;
 }
 
 .MuiCard-root {

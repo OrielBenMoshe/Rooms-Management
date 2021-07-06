@@ -40,9 +40,7 @@ app.post("/get_room", async (req, res) => {
   };
 
   //the date we make the reservation
-  let date = `${req.body.reservation.theMonth}/${
-    req.body.reservation.theDay
-  }/${new Date().getFullYear()}`;
+  let date = `${req.body.reservation.theMonth}/${req.body.reservation.theDay}/${new Date().getFullYear()}`;
 
   //getDay() returns a number between 0-6 represents the day
   const days = [
@@ -56,7 +54,11 @@ app.post("/get_room", async (req, res) => {
   ];
   let dayName = days[new Date(date).getDay()];
 
-  //checks if there are any rooms that open on hours selected and returns with rooms open on thoose hours and capacity greater&euqal than
+  /**
+   * Checks if there are any rooms that open on hours selected 
+   * and returns with rooms open on thoose hours 
+   * and capacity greater&euqal than
+   * */ 
 
   const roomsFound = await models.Room.find({
     capacity: { $gte: req.body.reservation.capacity },
@@ -73,7 +75,6 @@ app.post("/get_room", async (req, res) => {
     }
   });
 
-  // if we found rooms that can match
   if (matchingRooms !== []) {
     //sorts rooms from smallest capacity to biggest
     matchingRooms.sort(function (a, b) {

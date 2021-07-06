@@ -21,7 +21,6 @@ function OpenningPage() {
     root: {
     backgroundColor: 'white',
     margin: 'auto',
-    width: 345,
     textAlign: 'right',
     },
     notification: {

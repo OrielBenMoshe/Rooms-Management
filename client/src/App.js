@@ -3,6 +3,7 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import Verification from "./components/Verification/Verification";
 import OpenningPage from "./components/OpenningPage/OpenningPage";
 import UserProfile from "./components/userProfile/UserProfile";
 import Lobby from "./components/Lobby/Lobby";
@@ -65,7 +66,7 @@ function App() {
                 <Link to="/Lobby">Lobby</Link>
               </li>
               <li>
-                <Link to="/Dialer">Dialer</Link>
+                <Link to="/Verification">Verification</Link>
               </li>
             </ul>
             <hr />
@@ -79,6 +80,9 @@ function App() {
                 </Route>
                 <Route path="/Lobby">
                   <Lobby />
+                </Route>
+                <Route path="/Verification">
+                  <Verification />
                 </Route>
               </Switch>
             </UserProvider>

@@ -28,7 +28,7 @@ const Reservation = () => {
           </Typography>
           <Button className="edit"><img src="/images/edit_icon.svg" alt="" /></Button>
         </CardContent>
-      <Divider/>
+        <Divider />
       </CardActionArea>
     </Card>
   )
