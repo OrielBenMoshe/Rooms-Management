@@ -22,12 +22,17 @@ app.use(bodyParser.json());
 // models.Client.insertMany(clientssArray);
 // models.Reservation.insertMany(reservationArr);
 
-app.get("/", (req, res) => {
-  res.send("hello from server ~!");
+
+app.post("/Verification", async (req, res) => {
+  console.log(req.body);
+
+
+  res.send("{bool:true}");
+  
+
 });
 
 //get room match for customer
-
 app.post("/get_room", async (req, res) => {
   console.log(req.body);
 

@@ -20,7 +20,7 @@ function App() {
     name: 'דניאל בן דוד',
     phone: '050-3334444',
     email: 'danielBenDa@gmail.com',
-    password: 123,
+    password: '1234',
     regularCustomer: true,
     credit: 8,
     client_reservation: [1,2,3]

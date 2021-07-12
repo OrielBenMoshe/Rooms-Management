@@ -13,7 +13,7 @@ const clientsArr = [
     user_name: "david",
     phone: "0527323002",
     email: "david@gmail.com",
-    password: "12345",
+    password: "1234",
     regularCustomer: true,
     credits: 12,
     client_reservation: [

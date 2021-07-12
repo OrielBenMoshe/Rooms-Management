@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
+/** סכמת חדרים */
 const RoomSchema = new mongoose.Schema(
   {
     room_name: String,
@@ -20,7 +21,7 @@ const RoomSchema = new mongoose.Schema(
   },
   { timesamps: true }
 );
-
+/** סכמת הזמנות */
 const ReservationSchema = new mongoose.Schema({
   id_room: { type: schema.Types.ObjectId, ref: "Room" },
   id_client: { type: schema.Types.ObjectId, ref: "Client" },
@@ -28,7 +29,7 @@ const ReservationSchema = new mongoose.Schema({
   start: String,
   end: String,
 });
-
+/** סכמת לקוח */
 const ClientSchema = new mongoose.Schema({
   user_name: String,
   phone: String,

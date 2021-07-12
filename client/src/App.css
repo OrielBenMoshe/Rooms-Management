@@ -19,6 +19,7 @@ h2{
   /* Color Palette */
   --turquoise: #00AAAF;
   --bg-gray: #e6e6e6;
+  --red-error: #de515d;
 }
 
 .app,
