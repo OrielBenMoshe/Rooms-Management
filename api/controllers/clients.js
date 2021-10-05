@@ -5,7 +5,7 @@ const Client = require("../models/clientschema");
 
 module.exports = {
   signup: (req, res) => {
-    const { email, password } = req.body;
+    const { client_name, phone, email, password, regularCustomer, credits} = req.body;
 
     /** Check if email exists. */
     Client.find({ email }).then((clients) => {
@@ -23,8 +23,12 @@ module.exports = {
         }
         const client = new Client({
           _id: new mongoose.Types.ObjectId(),
+          client_name,
+          phone,
           email,
           password: hash,
+          credits,
+          regularCustomer
         });
 
         client
@@ -46,25 +50,28 @@ module.exports = {
   },
   login: (req, res) => {
     const { email, password } = req.body;
-
+   console.log('req.body: ', req.body);
     /** Check if email exists. */
     Client.find({ email }).then((clients) => {
       if (clients.length === 0) {
+        console.log('email not found');
         return res.status(401).json({
           message: "Auth failed",
         });
       }
-
-      const [client] = clients;
-
+            
       /** Auth the password. */
+      const [client] = clients;
       bcrypt.compare(password, client.password, (error, result) => {
         if (error) {
+          console.log('password worng');
           return res.status(401).json({
             message: "Auth failed",
           });
         }
-
+        console.log('password: ', password);
+        console.log('client.password: ', client.password);
+        console.log('result: ', result);
         if (result) {
           const token = jwt.sign(
             {
@@ -89,7 +96,7 @@ module.exports = {
       });
     });
   },
-  getAllClient: (req, res) => {
+  getAllClients: (req, res) => {
     Client.find().then((client)=>{
         res.status(200).json({
           client

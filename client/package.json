@@ -20,10 +20,9 @@
     "react-native-confirmation-code-field": "^6.5.1",
     "react-native-phone-call": "^1.0.9",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^0.9.5",
+    "react-scripts": "^4.0.3",
     "react-spring": "^8.0.27",
-    "react-swipeable-views": "^0.13.9",
-    "web-vitals": "^0.2.4"
+    "react-swipeable-views": "^0.13.9"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "web-vitals": "^2.1.0"
   }
 }
