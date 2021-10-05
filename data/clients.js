@@ -1,5 +1,5 @@
 // const ClientSchema = new mongoose.Schema({
-//     user_name: String,
+//     client_name: String,
 //     phone: String,
 //     email: String,
 //     password: String,
@@ -10,7 +10,7 @@
 
 const clientsArr = [
   {
-    user_name: "david",
+    client_name: "david",
     phone: "0527323002",
     email: "david@gmail.com",
     password: "1234",
@@ -22,7 +22,7 @@ const clientsArr = [
     ],
   },
   {
-    user_name: "sara",
+    client_name: "sara",
     phone: "0502327002",
     email: "sara@gmail.com",
     password: "12345",

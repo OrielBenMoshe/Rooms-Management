@@ -105,12 +105,12 @@ const Verification = () => {
     <div className="verification">
       <div>
         <h2>אימות הרשמה</h2>
-        <article>נא להזין את קוד האימות שנשלח אליך<br />לטלפון מספר: {user.phone}</article>
+        <reservation>נא להזין את קוד האימות שנשלח אליך<br />לטלפון מספר: {user.phone}</reservation>
       </div>
       <div className="input_wrapper">
         {textFields}
       </div>
-      <article>לא קיבלת את הקוד?<a> לקבלת קוד חדש </a></article>
+      <reservation>לא קיבלת את הקוד?<a> לקבלת קוד חדש </a></reservation>
     </div>
   )
 }

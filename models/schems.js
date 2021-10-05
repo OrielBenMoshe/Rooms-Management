@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
-/** סכמת חדרים */
+//* סכמת חדרים *//
 const RoomSchema = new mongoose.Schema(
   {
     room_name: String,
@@ -31,7 +31,7 @@ const ReservationSchema = new mongoose.Schema({
 });
 /** סכמת לקוח */
 const ClientSchema = new mongoose.Schema({
-  user_name: String,
+  client_name: String,
   phone: String,
   email: String,
   password: String,
